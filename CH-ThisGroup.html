@@ -1,0 +1,116 @@
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Time</title>
+    <style>
+        #time_body {
+            margin: auto;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            height: 50%;
+            width: 90%;
+        }
+
+        .time {
+            font-size: 50px;
+        }
+
+        .title {
+            font-size: 40px;
+            margin-bottom: 60px;
+        }
+
+
+		table,th,td{
+			border: 1px solid black;
+		}
+
+		td
+		{
+			text-align:left;
+			Padding: 10px;
+		}
+
+		th {color:blue;}
+    </style>
+</head>
+
+<body onload="startTime()">
+	<table>
+	  <tr>
+	   <th class="title">時間</th>
+		<th class="title">地點</th>
+		<th class="title">奇怪的人</th>
+	  </tr>
+	  <tr>
+	   <td id="taipei" class="time">11:11:11</td>
+		<td class="title">台北</td>
+		<td>Angela，Kim，Micha，Priya，Rosty，Su，Viking，YuLin</td>		
+	  </tr>
+	  <tr>
+	   <td id="tokyo" class="time">11:11:11</td>
+		<td class="title">日韓</td>
+		<td>Allen，Aya，Data，Mila，Yuki，小柊</td>
+	  </tr>
+	  <tr>
+	   <td id="PST" class="time">11:11:11</td>
+		<td class="title">美西</td>
+		<td>Andy，Carol，Peggy，Stanley，Stephanie，William</td>
+	  </tr>
+	 <tr>
+	   <td id="MST" class="time">11:11:11</td>
+		<td class="title">山區</td>
+		<td>Jerry</td>
+	  </tr>
+	 <tr>	  
+	 <tr>
+	   <td id="CST" class="time">11:11:11</td>
+		<td class="title">美中</td>
+		<td>Draco，Yang</td>
+	  </tr>
+	 <tr>
+	   <td id="EST" class="time">11:11:11</td>
+		<td class="title">美東</td>
+		<td>ChaoWei，佳Kat</td>
+	  </tr>
+	</table>
+
+<script type="text/javascript">
+    function startTime() {
+        document.getElementById('taipei').innerHTML = calcTime(+8)
+        document.getElementById('tokyo').innerHTML = calcTime(+9)
+        document.getElementById('PST').innerHTML = calcTime(-8)
+		document.getElementById('MST').innerHTML = calcTime(-7)
+        document.getElementById('CST').innerHTML = calcTime(-6)
+        document.getElementById('EST').innerHTML = calcTime(-5)
+
+        t = setTimeout('startTime()', 1000)
+    }
+
+    function checkTime(i) {
+        if (i < 10) { i = "0" + i }
+        return i
+    }
+
+    function calcTime(offset) {
+        var d = new Date();
+        var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+        var nd = new Date(utc + (3600000 * offset));
+        var h = nd.getHours()
+        var m = nd.getMinutes()
+        var s = nd.getSeconds()
+        h = checkTime(h)
+        m = checkTime(m)
+        s = checkTime(s)
+        return h + ":" + m + ":" + s
+    }
+
+</script>
+
+
+</body></html>
