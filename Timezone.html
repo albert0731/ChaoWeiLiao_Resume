@@ -43,57 +43,43 @@
         <th class="location">地點</th>
       </tr>
 	  <tr>
-       <td id="taiwan" class="time">11:11:11</td>
-        <td class="location">台灣</td>        
+       <td id="Taipei" class="time">11:11:11</td>
+        <td class="location">台灣 Asia/Taipei</td>        
       </tr>
       <tr>
-       <td id="tokyo" class="time">11:11:11</td>
-        <td class="location">日韓</td>
+       <td id="Tokyo" class="time">11:11:11</td>
+        <td class="location">日韓 Asia/Tokyo</td>
       </tr>
       <tr>
-       <td id="HST" class="time">11:11:11</td>
-        <td class="location">夏威夷</td>
+       <td id="Honolulu" class="time">11:11:11</td>
+        <td class="location">夏威夷 Pacific/Honolulu</td>
       </tr>
       <tr>     
-       <td id="PST" class="time">11:11:11</td>
-        <td class="location">美西</td>
+       <td id="Los_Angeles" class="time">11:11:11</td>
+        <td class="location">美西 America/Los_Angeles</td>
 	  </tr>
       <tr>
-       <td id="CST" class="time">11:11:11</td>
-        <td class="location">美中</td>
+       <td id="Chicago" class="time">11:11:11</td>
+        <td class="location">美中 America/Chicago</td>
       </tr>
 
     </table>
 
 <script type="text/javascript">
-    function startTime() {
-        document.getElementById('taiwan').innerHTML = calcTime(+8)
-        document.getElementById('tokyo').innerHTML = calcTime(+9)
-	document.getElementById('HST').innerHTML = calcTime(-10)
-        document.getElementById('PST').innerHTML = calcTime(-7)
-        //document.getElementById('MST').innerHTML = calcTime(-6)
-        document.getElementById('CST').innerHTML = calcTime(-5)
-        //document.getElementById('EST').innerHTML = calcTime(-4)
-        t = setTimeout('startTime()', 1000)
-    }
+	function startTime() {
+		document.getElementById('Taipei').innerHTML = getTimeInZone('Asia/Taipei');
+		document.getElementById('Tokyo').innerHTML = getTimeInZone('Asia/Tokyo');
+		document.getElementById('Honolulu').innerHTML = getTimeInZone('Pacific/Honolulu');
+		document.getElementById('Los_Angeles').innerHTML = getTimeInZone('America/Los_Angeles');
+		document.getElementById('Chicago').innerHTML = getTimeInZone('America/Chicago');
+		setTimeout(startTime, 1000);
+	}
 
-    function checkTime(i) {
-        if (i < 10) { i = "0" + i }
-        return i
-    }
+	function getTimeInZone(tz) {
+		return new Date().toLocaleTimeString('en-US', { hour12: false, timeZone: tz });
+	}
 
-    function calcTime(offset) {
-        var d = new Date();
-        var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
-        var nd = new Date(utc + (3600000 * offset));
-        var h = nd.getHours()
-        var m = nd.getMinutes()
-        var s = nd.getSeconds()
-        h = checkTime(h)
-        m = checkTime(m)
-        s = checkTime(s)
-        return h + ":" + m + ":" + s
-    }
+
 
 </script>
 
