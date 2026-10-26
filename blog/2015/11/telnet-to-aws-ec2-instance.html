@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Telnet to AWS EC2 instance — 無人機與製造測試筆記</title>
+  <meta name="description" content="Amazon EC2 setup and Configuration 建立及設定 Start telnet by Terminal I use Terminal on Mac OS for following example Telnet command : ssh -i ~/P…">
+  <link rel="canonical" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/telnet-to-aws-ec2-instance.html">
+  <link rel="alternate" type="application/rss+xml" title="無人機與製造測試筆記" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/feed.xml">
+  <meta property="og:site_name" content="無人機與製造測試筆記">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Telnet to AWS EC2 instance — 無人機與製造測試筆記">
+  <meta property="og:description" content="Amazon EC2 setup and Configuration 建立及設定 Start telnet by Terminal I use Terminal on Mac OS for following example Telnet command : ssh -i ~/P…">
+  <meta property="og:url" content="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/telnet-to-aws-ec2-instance.html">
+  <meta property="og:image" content="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/assets/images/legacy/telnet-to-aws-ec2-instance/img-01.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Telnet to AWS EC2 instance — 無人機與製造測試筆記">
+  <meta name="twitter:description" content="Amazon EC2 setup and Configuration 建立及設定 Start telnet by Terminal I use Terminal on Mac OS for following example Telnet command : ssh -i ~/P…">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=Noto+Serif+TC:wght@400;500&family=Inter:wght@400;500&family=Noto+Sans+TC:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container row">
+      <a class="site-mark" href="../../index.html">無人機與製造測試筆記<small>Drone &amp; Manufacturing Test Notes</small></a>
+      <nav class="site-nav">
+        <a href="../../index.html">文章 Posts</a>
+        <a href="../../series/drone/index.html">無人機連載</a>
+        <a href="../../tags/index.html">標籤 Tags</a>
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">回到履歷 Resume</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <article>
+    <div class="post-head">
+      <h1>Telnet to AWS EC2 instance</h1>
+      
+      <div class="post-meta">
+        <time datetime="2015-11-09">2015-11-09</time>
+        <div class="tags"><span class="tag-chip"><a href="../../tags/amazon.html">Amazon</a></span><span class="tag-chip"><a href="../../tags/big-data.html">Big Data</a></span><span class="tag-chip"><a href="../../tags/ec2.html">EC2</a></span></div>
+      </div>
+    </div>
+    <div class="lang-section">
+      
+      <div class="prose"><p><a href="http://chaowei0731.blogspot.com/2015/11/amazon-ec2-setup-and-configuration.html">Amazon EC2 setup and Configuration 建立及設定</a></p>
+<h2>Start telnet by Terminal</h2>
+<p>I use Terminal on Mac OS for following example</p>
+<p>Telnet command :</p>
+<p>ssh -i ~/Path/Name_Of_Key.pem username@IP_Address</p>
+<blockquote>
+<p>/Path/Name_Of_Key.pem : Location of &quot;<a href="http://chaowei0731.blogspot.com/2015/11/amazon-ec2-setup-and-configuration.html#KeyPair">the Key file</a>&quot;<br> username depend on &quot;<a href="http://chaowei0731.blogspot.com/2015/11/amazon-ec2-setup-and-configuration.html#AMI">which Amazon Machine Image you use</a>&quot;<br>Amazon Linux - username : ec2-user<br>Ubuntu Server - username : ubuntu</p>
+</blockquote>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgzwzxzx3U8oItx8RQROJ2BRKTnwkc-fuDphaGKVlwSXmAFbxSrE51xTpQijSqRLAZQklhGwz5u00hWThKPajWOmBDGfS-ze3E9HZJ9v12OLzCc4FVJXuehObyAFZ7u49GdhIjo5bN6xbzm/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2588%25AA%25E5%259C%2596+2015-11-10+00.01.45.png"><img src="../../assets/images/legacy/telnet-to-aws-ec2-instance/img-01.png" alt=""></a></p>
+<p>Don&#39;t worry if you can&#39;t remember, just check your AWS management page<br>Click &quot;Instances&quot; -&gt; &quot;Actions&quot; -&gt; &quot;Connect&quot;<br>It will show you the command you need.<br>You can copy the Example, just change the PEM file path.  </p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgdCvqC15w7C8CNZouh8H5PPnyoSWj_KSg6iyLruxbymYeEeDBYrMhjJZijGxWOuR3glEZZPbhZBSHDqofgtmBb8nlx3ITAr7Cn0weENguf8BjWQ_7DKoZ1jxheTAguUDFA0SDYF27lRFI2/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2588%25AA%25E5%259C%2596+2015-11-10+00.21.48.png"><img src="../../assets/images/legacy/telnet-to-aws-ec2-instance/img-02.png" alt=""></a></p>
+<h2>Unprotected Private Key File</h2>
+<p>If &quot;WARNING: UNPROTECTED PRIVATE KEY FILE!&quot; pops up?</p>
+<p>It&#39;s because the permission of PEM file didn&#39;t restrict to user only.</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhRp4Odj62Ul5b3e84gWQvgomJ-J3cq-qrfevh9U3rVC2xj34Ejyw-BivIGCNQBRct3-xw-uC9ZCW7WAFH-QudhUDSMgh9RS3dvmvOrjYiZTgbRnmsc4EERSthnewp-FzvfU9-gxkXFCYvC/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2588%25AA%25E5%259C%2596+2015-11-10+00.28.18.png"><img src="../../assets/images/legacy/telnet-to-aws-ec2-instance/img-03.png" alt=""></a></p>
+<p>use follow command to change PEM file permission.  </p>
+<p>chmod 400 ~/Path/Name_Of_Key.pem</p>
+<h2>Connect</h2>
+<p>Are you sure you want to continue connecting (yes/no)?</p>
+<p>Type &quot;yes&quot;</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNakfLWKX-hrBBbj2H9tFP-em0IRPTzb7zTUL2hWsbz84wzUELnxVSM0ywKqawQjykSwuXuO2-9m21B1a8JiAf7kcd5uROuU_7PIt5_sjFqiXPj9bF3NoSMEH87qBiaFzWboVQ-3qo3zda/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2588%25AA%25E5%259C%2596+2015-11-10+00.36.23.png"><img src="../../assets/images/legacy/telnet-to-aws-ec2-instance/img-04.png" alt=""></a></p>
+<p>Congratulations!! You connected to your own cloud server :P  </p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg56ATspphYchwxMmuOGMBSIvnsAaSJnv_HZEAUIT8nsTLH2WrIFCX5XAjzwYbKsIIn8AXbnJnJfLvN_SSmB-RSCMfXrfJwEG1xwGbqp_caXJNSDX8Z5YitLqptY-VBheEUAo_f7TtYYF1L/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2588%25AA%25E5%259C%2596+2015-11-10+00.37.22.png"><img src="../../assets/images/legacy/telnet-to-aws-ec2-instance/img-05.png" alt=""></a></p>
+<h2>Troubleshooting</h2>
+<p>If you reinstall your instance, this Warning pops up.</p>
+<p>WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgXapQPrRDjROF-ofK6rA0L4lK2FXLOiRYEhpL7iqDipHewNrn_XrKcT0ng2WXldvxZNKWUECCtbBMNfdNW8VWvdOja-0KThHK3q5L75BSlCvHyqAbGkbwoeoKX3yd97g8ksa_BXOkDMF2H/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2588%25AA%25E5%259C%2596+2015-11-10+01.17.49.png"><img src="../../assets/images/legacy/telnet-to-aws-ec2-instance/img-06.png" alt=""></a></p>
+<p>Terminal will generate a certification After first SSH,</p>
+<p>The local host(your computer) didn&#39;t know you reinstall the server</p>
+<p>You have to reset the SSH certification by following command</p>
+<blockquote>
+<p>ssh-keygen -R <host IP></p>
+</blockquote>
+</div>
+    </div>
+    <p class="legacy-note">原始出處 Originally published at <a href="https://chaowei0731.blogspot.com/2015/11/telnet-to-aws-ec2-instance.html">https://chaowei0731.blogspot.com/2015/11/telnet-to-aws-ec2-instance.html</a></p>
+  </article>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container row">
+      <span>ChaoWei Liao — 無人機系統、量產測試與驗證的工程筆記，繁中與英文對照。</span>
+      <span>
+        <a href="../../feed.xml">RSS</a> ·
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">ChaoWei Liao 履歷 / Resume</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

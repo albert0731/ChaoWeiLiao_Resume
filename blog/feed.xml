@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>無人機與製造測試筆記</title>
+  <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/index.html</link>
+  <description>無人機系統、量產測試與驗證的工程筆記，繁中與英文對照。</description>
+  <language>zh-tw</language>
+  <item>
+    <title>Big Data Step by Step</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/big-data-step-by-step.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/big-data-step-by-step.html</guid>
+    <pubDate>Wed, 11 Nov 2015 00:00:00 GMT</pubDate>
+    <description>1. Amazon EC2 setup and Configuration 建立及設定 2. Telnet to AWS EC2 instance 3. Install Spark and Scala on Ubuntu 4. Connect and upload files t…</description>
+  </item>
+  <item>
+    <title>Connect and upload files to AWS EC2 by FTP</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/connect-and-upload-files-to-aws-ec2-by.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/connect-and-upload-files-to-aws-ec2-by.html</guid>
+    <pubDate>Tue, 10 Nov 2015 00:00:00 GMT</pubDate>
+    <description>Connect to AWS EC2 by FileZilla Following example using FileZilla 3.140 for Mac OS Add Key to FileZilla FileZilla or (Edit) or (Preferences)…</description>
+  </item>
+  <item>
+    <title>First Spark Program on EC2</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/first-spark-program-on-ec2.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/first-spark-program-on-ec2.html</guid>
+    <pubDate>Tue, 10 Nov 2015 00:00:00 GMT</pubDate>
+    <description>First Scala Program on EC2 1. Upload our test file &quot;review.csv&quot; via FTP (This file include the score from 1~5 for some restaurant ) 2. Telne…</description>
+  </item>
+  <item>
+    <title>Install Spark and Scala on Ubuntu</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/install-spark-and-scala-on-ubuntu.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/install-spark-and-scala-on-ubuntu.html</guid>
+    <pubDate>Tue, 10 Nov 2015 00:00:00 GMT</pubDate>
+    <description>Previous &quot;Telnet to AWS EC2 instance&quot; Following are demonstration on AWS EC2 Ubuntu. Install Java sudo apt-add-repository ppa:webupd8team/ja…</description>
+  </item>
+  <item>
+    <title>Amazon EC2 setup and Configuration 建立及設定</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/amazon-ec2-setup-and-configuration.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/amazon-ec2-setup-and-configuration.html</guid>
+    <pubDate>Mon, 09 Nov 2015 00:00:00 GMT</pubDate>
+    <description>Amazon Elastic Compute Cloud (Amazon EC2) Registration 註冊 AWS Link 註冊網址 https://aws.amazon.com/free/ Pro 優點: Free for first year 第一年免費 Step:…</description>
+  </item>
+  <item>
+    <title>Telnet to AWS EC2 instance</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/telnet-to-aws-ec2-instance.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/telnet-to-aws-ec2-instance.html</guid>
+    <pubDate>Mon, 09 Nov 2015 00:00:00 GMT</pubDate>
+    <description>Amazon EC2 setup and Configuration 建立及設定 Start telnet by Terminal I use Terminal on Mac OS for following example Telnet command : ssh -i ~/P…</description>
+  </item>
+  <item>
+    <title>atoi()  itoa()  String to Integer or Integer to String</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/atoi-itoa-string-to-integer-or-integer.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/atoi-itoa-string-to-integer-or-integer.html</guid>
+    <pubDate>Wed, 04 Nov 2015 00:00:00 GMT</pubDate>
+    <description>String to Integer or Integer to String #include &lt;stdlib.h&gt; // for malloc #include &lt;string.h&gt; // for strlen int my_atoi(char *); int my_itoa(…</description>
+  </item>
+  <item>
+    <title>Important Topics for Embedded System Engineer</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/10/important-topics-for-embedded-system.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/10/important-topics-for-embedded-system.html</guid>
+    <pubDate>Mon, 26 Oct 2015 00:00:00 GMT</pubDate>
+    <description>Important Topics for Embedded System Engineer C Programming String (strcpy strcmp reverse) Bitwise operation inline vs define static volatil…</description>
+  </item>
+</channel>
+</rss>

@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>無人機開發 52 週連載 — 無人機與製造測試筆記</title>
+  <meta name="description" content="一份 52 週的工程筆記企畫：從整機系統、動力與飛控，到量產驗證與台灣產業。目前僅定稿目錄，文章尚未發布。">
+  <link rel="canonical" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/series/drone/index.html">
+  <link rel="alternate" type="application/rss+xml" title="無人機與製造測試筆記" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/feed.xml">
+  <meta property="og:site_name" content="無人機與製造測試筆記">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="無人機開發 52 週連載 — 無人機與製造測試筆記">
+  <meta property="og:description" content="一份 52 週的工程筆記企畫：從整機系統、動力與飛控，到量產驗證與台灣產業。目前僅定稿目錄，文章尚未發布。">
+  <meta property="og:url" content="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/series/drone/index.html">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="無人機開發 52 週連載 — 無人機與製造測試筆記">
+  <meta name="twitter:description" content="一份 52 週的工程筆記企畫：從整機系統、動力與飛控，到量產驗證與台灣產業。目前僅定稿目錄，文章尚未發布。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=Noto+Serif+TC:wght@400;500&family=Inter:wght@400;500&family=Noto+Sans+TC:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container row">
+      <a class="site-mark" href="../../index.html">無人機與製造測試筆記<small>Drone &amp; Manufacturing Test Notes</small></a>
+      <nav class="site-nav">
+        <a href="../../index.html">文章 Posts</a>
+        <a href="../../series/drone/index.html">無人機連載</a>
+        <a href="../../tags/index.html">標籤 Tags</a>
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">回到履歷 Resume</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <p class="lede">一份 52 週的工程筆記企畫：從整機系統、動力與飛控，到量產驗證與台灣產業。目前僅定稿目錄，文章尚未發布。</p>
+  <div class="series-section">
+      <h2>篇 A　系統觀</h2>
+      <div class="series-row">
+        <span class="n">#01</span>
+        <time datetime="2026-10-31">2026-10-31</time>
+        <div>
+          <div class="title-zh">為什麼要懂整台無人機：從需求到規格</div>
+          <div class="title-en">Why Whole-System Thinking: From Mission to Spec</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#02</span>
+        <time datetime="2026-11-07">2026-11-07</time>
+        <div>
+          <div class="title-zh">無人機架構全圖：機體、動力、飛控、感測、通訊</div>
+          <div class="title-en">Drone Architecture Map</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#03</span>
+        <time datetime="2026-11-14">2026-11-14</time>
+        <div>
+          <div class="title-zh">重量與推重比預算表怎麼做</div>
+          <div class="title-en">Building a Weight and Thrust-to-Weight Budget</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#04</span>
+        <time datetime="2026-11-21">2026-11-21</time>
+        <div>
+          <div class="title-zh">開源生態：PX4、ArduPilot、Betaflight 怎麼選</div>
+          <div class="title-en">Choosing PX4, ArduPilot or Betaflight</div>
+        </div>
+      </div>
+    </div>
+<div class="series-section">
+      <h2>篇 B　機體與動力</h2>
+      <div class="series-row">
+        <span class="n">#05</span>
+        <time datetime="2026-11-28">2026-11-28</time>
+        <div>
+          <div class="title-zh">機架設計：材料、剛性與振動</div>
+          <div class="title-en">Frame Design: Materials, Stiffness, Vibration</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#06</span>
+        <time datetime="2026-12-05">2026-12-05</time>
+        <div>
+          <div class="title-zh">螺旋槳選型：直徑、螺距與效率</div>
+          <div class="title-en">Propeller Selection: Diameter, Pitch, Efficiency</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#07</span>
+        <time datetime="2026-12-12">2026-12-12</time>
+        <div>
+          <div class="title-zh">無刷馬達入門：KV、極數與效率圖</div>
+          <div class="title-en">BLDC Motors: KV, Poles, Efficiency Maps</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#08</span>
+        <time datetime="2026-12-19">2026-12-19</time>
+        <div>
+          <div class="title-zh">推力台實測：怎麼量出可信的馬達數據</div>
+          <div class="title-en">Thrust Stand Testing for Reliable Motor Data</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#09</span>
+        <time datetime="2026-12-26">2026-12-26</time>
+        <div>
+          <div class="title-zh">ESC 原理：從 PWM 到 DShot</div>
+          <div class="title-en">ESC Basics: From PWM to DShot</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#10</span>
+        <time datetime="2027-01-02">2027-01-02</time>
+        <div>
+          <div class="title-zh">ESC 調校：FOC、Timing 與 RPM 濾波</div>
+          <div class="title-en">ESC Tuning: FOC, Timing, RPM Filtering</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#11</span>
+        <time datetime="2027-01-09">2027-01-09</time>
+        <div>
+          <div class="title-zh">能源路線：LiPo、鋰離子、固態與氫燃料</div>
+          <div class="title-en">Energy Options: LiPo, Li-ion, Solid-State, Hydrogen</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#12</span>
+        <time datetime="2027-01-16">2027-01-16</time>
+        <div>
+          <div class="title-zh">電池管理與續航估算</div>
+          <div class="title-en">Battery Management and Endurance Estimation</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#13</span>
+        <time datetime="2027-01-23">2027-01-23</time>
+        <div>
+          <div class="title-zh">電源設計：配電板、BEC 與雜訊</div>
+          <div class="title-en">Power Distribution, BEC and Noise</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#14</span>
+        <time datetime="2027-01-30">2027-01-30</time>
+        <div>
+          <div class="title-zh">動力系統整合：讓馬達、槳、電池互相匹配</div>
+          <div class="title-en">Matching Motor, Prop and Battery</div>
+        </div>
+      </div>
+    </div>
+<div class="series-section">
+      <h2>篇 C　飛控與感測</h2>
+      <div class="series-row">
+        <span class="n">#15</span>
+        <time datetime="2027-02-06">2027-02-06</time>
+        <div>
+          <div class="title-zh">飛控硬體：MCU、RTOS 與佈線</div>
+          <div class="title-en">Flight Controller Hardware and RTOS</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#16</span>
+        <time datetime="2027-02-13">2027-02-13</time>
+        <div>
+          <div class="title-zh">IMU 原理：陀螺儀與加速度計</div>
+          <div class="title-en">IMU Fundamentals: Gyro and Accelerometer</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#17</span>
+        <time datetime="2027-02-20">2027-02-20</time>
+        <div>
+          <div class="title-zh">IMU 校正與溫度補償</div>
+          <div class="title-en">IMU Calibration and Temperature Compensation</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#18</span>
+        <time datetime="2027-02-27">2027-02-27</time>
+        <div>
+          <div class="title-zh">振動是 IMU 的敵人：隔振與濾波</div>
+          <div class="title-en">Vibration vs IMU: Isolation and Filtering</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#19</span>
+        <time datetime="2027-03-06">2027-03-06</time>
+        <div>
+          <div class="title-zh">磁力計：硬鐵、軟鐵與干擾</div>
+          <div class="title-en">Magnetometer: Hard/Soft Iron and Interference</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#20</span>
+        <time datetime="2027-03-13">2027-03-13</time>
+        <div>
+          <div class="title-zh">姿態估測：互補濾波到 EKF</div>
+          <div class="title-en">Attitude Estimation: Complementary Filter to EKF</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#21</span>
+        <time datetime="2027-03-20">2027-03-20</time>
+        <div>
+          <div class="title-zh">GNSS、RTK 與干擾欺騙</div>
+          <div class="title-en">GNSS, RTK, Jamming and Spoofing</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#22</span>
+        <time datetime="2027-03-27">2027-03-27</time>
+        <div>
+          <div class="title-zh">氣壓計、光流與測距：定高定點</div>
+          <div class="title-en">Barometer, Optical Flow and Rangefinder</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#23</span>
+        <time datetime="2027-04-03">2027-04-03</time>
+        <div>
+          <div class="title-zh">PID 控制：從直覺到調參</div>
+          <div class="title-en">PID Control: Intuition to Tuning</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#24</span>
+        <time datetime="2027-04-10">2027-04-10</time>
+        <div>
+          <div class="title-zh">用飛行日誌調參：Blackbox 與 ULog</div>
+          <div class="title-en">Tuning with Flight Logs: Blackbox and ULog</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#25</span>
+        <time datetime="2027-04-17">2027-04-17</time>
+        <div>
+          <div class="title-zh">冗餘與容錯：從失效保護到三餘度</div>
+          <div class="title-en">Redundancy: From Failsafe to TMR and FDIR</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#26</span>
+        <time datetime="2027-04-24">2027-04-24</time>
+        <div>
+          <div class="title-zh">通訊鏈路與抗干擾：跳頻、圖傳、衛星</div>
+          <div class="title-en">Links and Anti-Jam: FHSS, Video, Satcom</div>
+        </div>
+      </div>
+    </div>
+<div class="series-section">
+      <h2>篇 D　視覺、自主與邊緣運算</h2>
+      <div class="series-row">
+        <span class="n">#27</span>
+        <time datetime="2027-05-01">2027-05-01</time>
+        <div>
+          <div class="title-zh">光電酬載：相機、熱像儀與雲台</div>
+          <div class="title-en">EO/IR Payloads: Cameras, Thermal, Gimbals</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#28</span>
+        <time datetime="2027-05-08">2027-05-08</time>
+        <div>
+          <div class="title-zh">GNSS 拒止導航：VIO、LiDAR SLAM 與地形匹配</div>
+          <div class="title-en">GNSS-Denied Navigation: VIO, LiDAR SLAM, Terrain Matching</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#29</span>
+        <time datetime="2027-05-15">2027-05-15</time>
+        <div>
+          <div class="title-zh">深度感測：雙目、ToF、LiDAR</div>
+          <div class="title-en">Depth Sensing: Stereo, ToF, LiDAR</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#30</span>
+        <time datetime="2027-05-22">2027-05-22</time>
+        <div>
+          <div class="title-zh">邊緣運算平台：Jetson 等的選擇</div>
+          <div class="title-en">Edge Computing Platforms</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#31</span>
+        <time datetime="2027-05-29">2027-05-29</time>
+        <div>
+          <div class="title-zh">機上 AI 推論：模型壓縮與加速</div>
+          <div class="title-en">On-board AI Inference: Compression and Acceleration</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#32</span>
+        <time datetime="2027-06-05">2027-06-05</time>
+        <div>
+          <div class="title-zh">伴隨電腦與飛控整合：ROS 2</div>
+          <div class="title-en">Companion Computer Integration with ROS 2</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#33</span>
+        <time datetime="2027-06-12">2027-06-12</time>
+        <div>
+          <div class="title-zh">自主任務與多機協同：規劃、避障、蜂群</div>
+          <div class="title-en">Autonomy and Multi-Drone: Planning, Avoidance, Swarms</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#34</span>
+        <time datetime="2027-06-19">2027-06-19</time>
+        <div>
+          <div class="title-zh">模擬先行：SITL 與 Gazebo</div>
+          <div class="title-en">Simulate First: SITL and Gazebo</div>
+        </div>
+      </div>
+    </div>
+<div class="series-section">
+      <h2>篇 E　量產、驗證與合規</h2>
+      <div class="series-row">
+        <span class="n">#35</span>
+        <time datetime="2027-06-26">2027-06-26</time>
+        <div>
+          <div class="title-zh">從原型到量產：DFM、DFA 與 MES 追溯</div>
+          <div class="title-en">Prototype to Production: DFM, DFA, MES Traceability</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#36</span>
+        <time datetime="2027-07-03">2027-07-03</time>
+        <div>
+          <div class="title-zh">產線末端檢測 EOL：推力、振動與電性</div>
+          <div class="title-en">End-of-Line Testing: Thrust, Vibration, Electrical</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#37</span>
+        <time datetime="2027-07-10">2027-07-10</time>
+        <div>
+          <div class="title-zh">EMC 與射頻快篩：屏蔽箱、GNSS 自擾</div>
+          <div class="title-en">EMC and RF Screening: Shield Boxes, GNSS Self-Jamming</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#38</span>
+        <time datetime="2027-07-17">2027-07-17</time>
+        <div>
+          <div class="title-zh">航太與軍規標準入門：DO-178C、DO-160G、MIL-STD</div>
+          <div class="title-en">Aerospace Standards 101: DO-178C, DO-160G, MIL-STD</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#39</span>
+        <time datetime="2027-07-24">2027-07-24</time>
+        <div>
+          <div class="title-zh">資安：鏈路加密與韌體安全</div>
+          <div class="title-en">Drone Cybersecurity: Links and Firmware</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#40</span>
+        <time datetime="2027-07-31">2027-07-31</time>
+        <div>
+          <div class="title-zh">NDAA 與 Blue UAS：美國的可信供應鏈規則</div>
+          <div class="title-en">NDAA and Blue UAS: US Trusted Supply Chain Rules</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#41</span>
+        <time datetime="2027-08-07">2027-08-07</time>
+        <div>
+          <div class="title-zh">台灣法規：遙控無人機管理規則</div>
+          <div class="title-en">Taiwan Drone Regulations</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#42</span>
+        <time datetime="2027-08-14">2027-08-14</time>
+        <div>
+          <div class="title-zh">國際認證與出口要求</div>
+          <div class="title-en">International Certification and Export</div>
+        </div>
+      </div>
+    </div>
+<div class="series-section">
+      <h2>篇 F　台灣產業與國防</h2>
+      <div class="series-row">
+        <span class="n">#43</span>
+        <time datetime="2027-08-21">2027-08-21</time>
+        <div>
+          <div class="title-zh">台灣無人機產業地圖：聚落、廠商與實驗室</div>
+          <div class="title-en">Taiwan Drone Industry Map: Hubs, Makers, Labs</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#44</span>
+        <time datetime="2027-08-28">2027-08-28</time>
+        <div>
+          <div class="title-zh">非紅零組件瓶頸：磁鐵、MOSFET、熱像儀、碳纖維</div>
+          <div class="title-en">Non-Red Bottlenecks: Magnets, MOSFETs, Thermal, Carbon Fiber</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#45</span>
+        <time datetime="2027-09-04">2027-09-04</time>
+        <div>
+          <div class="title-zh">《無人載具產業發展條例》工程師版解讀</div>
+          <div class="title-en">Taiwan&#39;s Uncrewed Vehicle Industry Act, for Engineers</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#46</span>
+        <time datetime="2027-09-11">2027-09-11</time>
+        <div>
+          <div class="title-zh">不只會飛：USV、UUV、UGV 工程差異</div>
+          <div class="title-en">Beyond the Air: USV, UUV, UGV Engineering</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#47</span>
+        <time datetime="2027-09-18">2027-09-18</time>
+        <div>
+          <div class="title-zh">戰場教訓：FPV、巡飛彈與成本交換比</div>
+          <div class="title-en">Battlefield Lessons: FPV, Loitering Munitions, Cost Exchange</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#48</span>
+        <time datetime="2027-09-25">2027-09-25</time>
+        <div>
+          <div class="title-zh">反無人機 C-UAS：干擾、欺騙、雷射、微波</div>
+          <div class="title-en">Counter-UAS: Jamming, Spoofing, Lasers, Microwaves</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#49</span>
+        <time datetime="2027-10-02">2027-10-02</time>
+        <div>
+          <div class="title-zh">給工程師的無人機職涯地圖</div>
+          <div class="title-en">Drone Engineering Career Map</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#50</span>
+        <time datetime="2027-10-09">2027-10-09</time>
+        <div>
+          <div class="title-zh">台灣的缺口與建議：測試場域、EOL、零件國產化</div>
+          <div class="title-en">Taiwan&#39;s Gaps and Recommendations</div>
+        </div>
+      </div>
+    </div>
+<div class="series-section">
+      <h2>篇 G　收尾</h2>
+      <div class="series-row">
+        <span class="n">#51</span>
+        <time datetime="2027-10-16">2027-10-16</time>
+        <div>
+          <div class="title-zh">實作總整理：一台機的完整開發紀錄</div>
+          <div class="title-en">Capstone: A Full Build Log</div>
+        </div>
+      </div>
+<div class="series-row">
+        <span class="n">#52</span>
+        <time datetime="2027-10-23">2027-10-23</time>
+        <div>
+          <div class="title-zh">一年回顧與下一步</div>
+          <div class="title-en">A Year in Review and What&#39;s Next</div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container row">
+      <span>ChaoWei Liao — 無人機系統、量產測試與驗證的工程筆記，繁中與英文對照。</span>
+      <span>
+        <a href="../../feed.xml">RSS</a> ·
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">ChaoWei Liao 履歷 / Resume</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

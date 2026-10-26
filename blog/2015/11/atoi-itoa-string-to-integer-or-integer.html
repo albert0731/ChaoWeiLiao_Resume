@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>atoi()  itoa()  String to Integer or Integer to String — 無人機與製造測試筆記</title>
+  <meta name="description" content="String to Integer or Integer to String #include &lt;stdlib.h&gt; // for malloc #include &lt;string.h&gt; // for strlen int my_atoi(char *); int my_itoa(…">
+  <link rel="canonical" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/atoi-itoa-string-to-integer-or-integer.html">
+  <link rel="alternate" type="application/rss+xml" title="無人機與製造測試筆記" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/feed.xml">
+  <meta property="og:site_name" content="無人機與製造測試筆記">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="atoi()  itoa()  String to Integer or Integer to String — 無人機與製造測試筆記">
+  <meta property="og:description" content="String to Integer or Integer to String #include &lt;stdlib.h&gt; // for malloc #include &lt;string.h&gt; // for strlen int my_atoi(char *); int my_itoa(…">
+  <meta property="og:url" content="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/atoi-itoa-string-to-integer-or-integer.html">
+  
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="atoi()  itoa()  String to Integer or Integer to String — 無人機與製造測試筆記">
+  <meta name="twitter:description" content="String to Integer or Integer to String #include &lt;stdlib.h&gt; // for malloc #include &lt;string.h&gt; // for strlen int my_atoi(char *); int my_itoa(…">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=Noto+Serif+TC:wght@400;500&family=Inter:wght@400;500&family=Noto+Sans+TC:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container row">
+      <a class="site-mark" href="../../index.html">無人機與製造測試筆記<small>Drone &amp; Manufacturing Test Notes</small></a>
+      <nav class="site-nav">
+        <a href="../../index.html">文章 Posts</a>
+        <a href="../../series/drone/index.html">無人機連載</a>
+        <a href="../../tags/index.html">標籤 Tags</a>
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">回到履歷 Resume</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <article>
+    <div class="post-head">
+      <h1>atoi()  itoa()  String to Integer or Integer to String</h1>
+      
+      <div class="post-meta">
+        <time datetime="2015-11-04">2015-11-04</time>
+        <div class="tags"><span class="tag-chip"><a href="../../tags/c.html">C</a></span></div>
+      </div>
+    </div>
+    <div class="lang-section">
+      
+      <div class="prose"><h2>String to Integer or Integer to String</h2>
+<p>#include &lt;stdlib.h&gt; // for malloc
+#include &lt;string.h&gt; // for strlen
+int my_atoi(char *);
+int my_itoa(int);
+void reverse(char *);
+int main(int argc, char const* argv[])
+{
+    char s[] = &quot;12345&quot;;
+    //string to integer
+    int i = my_atoi(s);
+    printf(&quot;my_atoi %d\n&quot;,i);</p>
+<pre><code>//integer to string
+char \*a = my\_itoa(i);
+//12345
+printf(&quot;my\_itoa %s\\n&quot;,a);
+a = my\_itoa(-i);
+//-12345
+printf(&quot;my\_itoa %s\\n&quot;,a);
+return 0;
+</code></pre>
+<p>}
+int my_atoi(char *s){
+    int sum = 0;
+    int pos = 0;
+    if(s[pos]==&#39;-&#39;)
+        pos++;</p>
+<pre><code>while(s\[pos\] != &#39;\\0&#39;){
+    sum = sum\*10+s\[pos\]-&#39;0&#39;; //remember to minus &#39;0&#39;
+    pos++;
+}
+if(s\[pos\]==&#39;-&#39;)
+    return 0-sum;
+
+return sum;
+</code></pre>
+<p>};</p>
+<p>void reverse(char *s){
+    for(int i = 0, j = strlen(s)-1; i &lt; j ; i++,j--){
+        int c = s[i];
+        s[i] = s[j];
+        s[j] = c;
+    }
+}</p>
+<p>int my_itoa(int n){
+ char *s = (char*)malloc(log10(n)+1 * sizeof(char)); // allocate the digits of integer
+    int flag = 1; // flag:1 pos, 0:nag
+    if (n &lt; 0){
+        n = -n;
+        flag = 0;
+    }
+    int pos = 0;
+    while(n != 0){
+        s[pos++] = n%10 + &#39;0&#39;; //remember to add &#39;0&#39;
+        n = n/10;
+    }
+    if(!flag)
+        s[pos++] = &#39;-&#39;;
+    s[pos] = &#39;\0&#39;;
+    reverse(s);</p>
+<pre><code>return s;
+</code></pre>
+<p>}</p>
+</div>
+    </div>
+    <p class="legacy-note">原始出處 Originally published at <a href="https://chaowei0731.blogspot.com/2015/11/atoi-itoa-string-to-integer-or-integer.html">https://chaowei0731.blogspot.com/2015/11/atoi-itoa-string-to-integer-or-integer.html</a></p>
+  </article>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container row">
+      <span>ChaoWei Liao — 無人機系統、量產測試與驗證的工程筆記，繁中與英文對照。</span>
+      <span>
+        <a href="../../feed.xml">RSS</a> ·
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">ChaoWei Liao 履歷 / Resume</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

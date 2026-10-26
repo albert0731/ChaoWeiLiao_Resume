@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Connect and upload files to AWS EC2 by FTP — 無人機與製造測試筆記</title>
+  <meta name="description" content="Connect to AWS EC2 by FileZilla Following example using FileZilla 3.140 for Mac OS Add Key to FileZilla FileZilla or (Edit) or (Preferences)…">
+  <link rel="canonical" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/connect-and-upload-files-to-aws-ec2-by.html">
+  <link rel="alternate" type="application/rss+xml" title="無人機與製造測試筆記" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/feed.xml">
+  <meta property="og:site_name" content="無人機與製造測試筆記">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Connect and upload files to AWS EC2 by FTP — 無人機與製造測試筆記">
+  <meta property="og:description" content="Connect to AWS EC2 by FileZilla Following example using FileZilla 3.140 for Mac OS Add Key to FileZilla FileZilla or (Edit) or (Preferences)…">
+  <meta property="og:url" content="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/connect-and-upload-files-to-aws-ec2-by.html">
+  <meta property="og:image" content="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/assets/images/legacy/connect-and-upload-files-to-aws-ec2-by/img-01.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Connect and upload files to AWS EC2 by FTP — 無人機與製造測試筆記">
+  <meta name="twitter:description" content="Connect to AWS EC2 by FileZilla Following example using FileZilla 3.140 for Mac OS Add Key to FileZilla FileZilla or (Edit) or (Preferences)…">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=Noto+Serif+TC:wght@400;500&family=Inter:wght@400;500&family=Noto+Sans+TC:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container row">
+      <a class="site-mark" href="../../index.html">無人機與製造測試筆記<small>Drone &amp; Manufacturing Test Notes</small></a>
+      <nav class="site-nav">
+        <a href="../../index.html">文章 Posts</a>
+        <a href="../../series/drone/index.html">無人機連載</a>
+        <a href="../../tags/index.html">標籤 Tags</a>
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">回到履歷 Resume</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <article>
+    <div class="post-head">
+      <h1>Connect and upload files to AWS EC2 by FTP</h1>
+      
+      <div class="post-meta">
+        <time datetime="2015-11-10">2015-11-10</time>
+        <div class="tags"><span class="tag-chip"><a href="../../tags/amazon.html">Amazon</a></span><span class="tag-chip"><a href="../../tags/ec2.html">EC2</a></span></div>
+      </div>
+    </div>
+    <div class="lang-section">
+      
+      <div class="prose"><h2>Connect to AWS EC2 by FileZilla</h2>
+<p>Following example using FileZilla 3.140 for Mac OS  </p>
+<h2>Add Key to FileZilla</h2>
+<ol>
+<li><p>FileZilla or (Edit) or (Preferences) -&gt; Settings -&gt; Connection -&gt; SFTP</p>
+</li>
+<li><p>Click &quot;Add key file&quot;</p>
+</li>
+<li><p>Select <a href="http://chaowei0731.blogspot.com/2015/11/amazon-ec2-setup-and-configuration.html#KeyPair">your Key saved before</a></p>
+<p><a href="http://chaowei0731.blogspot.com/2015/11/amazon-ec2-setup-and-configuration.html#KeyPair"></a><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjp-09lcCguANT8naiaSIUAF0NRPxu3hoJLfbI1zdXm6dX6lNbCpgDhdrTyFz30PP13-wzCSbxANJXlLnbf6PWM3KAqmjeP0oWy08kjFXEW4zj6OnT3wBkmDsv6W3dE0Gh70isB6nvX2NZu/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2588%25AA%25E5%259C%2596+2015-11-11+00.55.58.png"><img src="../../assets/images/legacy/connect-and-upload-files-to-aws-ec2-by/img-01.png" alt=""></a></p>
+</li>
+<li><p>File -&gt; Site Manager.</p>
+</li>
+<li><p>Add a new site with the following parameters:</p>
+</li>
+</ol>
+<ul>
+<li><p><strong>Host :</strong> Your IP Address of EC2 instance</p>
+</li>
+<li><p><strong>Protocol :</strong> SFTP</p>
+</li>
+<li><p><strong>Logon Type :</strong> Normal</p>
+</li>
+<li><p><strong>User :</strong> For Amazon Linux &quot;ec2-user&quot;, </p>
+</li>
+<li><p>For Ubuntu &quot;ubuntu&quot;. </p>
+</li>
+<li><p><a href="http://chaowei0731.blogspot.com/2015/11/telnet-to-aws-ec2-instance.html">Check your AWS management page if not sure.</a></p>
+</li>
+<li><p><strong>Password:</strong> Leave it there</p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjV1Fhfz-2jZ14wMUnySTVz2c6lAqCoXka5Uj0d4rsCEOlEdvSXYSVHpUg5iCK5IdvpFHYRvlIvRJKXWcgm_p6OLWA5x_ILVpTM3VOfFZpdU08htyuOjd3A0PZQ2PhQLmRVp4plxmfPclAA/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2588%25AA%25E5%259C%2596+2015-11-11+01.03.38.png"><img src="../../assets/images/legacy/connect-and-upload-files-to-aws-ec2-by/img-02.png" alt=""></a></p>
+</li>
+</ul>
+<p>6. Click &quot;Always...&quot; and OK </p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgkg5GmLVxltkZGEsTM2Ua9x_LBjMC8Du-ad9NR8czR8rkQNlzpl0EKUOQT6MoXgGyYIc-S7B5szm1L0pR0aheLgwcEAf-zGgzQ-mIHZa1RiknEdwZrX3FRVWHnUNWftYNGPLtcB62wVLDG/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2588%25AA%25E5%259C%2596+2015-11-11+01.04.31.png"><img src="../../assets/images/legacy/connect-and-upload-files-to-aws-ec2-by/img-03.png" alt=""></a></p>
+</div>
+    </div>
+    <p class="legacy-note">原始出處 Originally published at <a href="https://chaowei0731.blogspot.com/2015/11/connect-and-upload-files-to-aws-ec2-by.html">https://chaowei0731.blogspot.com/2015/11/connect-and-upload-files-to-aws-ec2-by.html</a></p>
+  </article>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container row">
+      <span>ChaoWei Liao — 無人機系統、量產測試與驗證的工程筆記，繁中與英文對照。</span>
+      <span>
+        <a href="../../feed.xml">RSS</a> ·
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">ChaoWei Liao 履歷 / Resume</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
