@@ -61,6 +61,7 @@ function loadPosts(contentDir) {
       year,
       month,
       tags: Array.isArray(data.tags) ? data.tags : [],
+      series: data.series || null,
       lang,
       excerpt: data.excerpt || '',
       excerptEn: data.excerptEn || '',

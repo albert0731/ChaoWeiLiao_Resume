@@ -2,7 +2,8 @@ const fs = require('fs');
 const path = require('path');
 
 const config = require('../config');
-const droneSeries = require('../data/drone-series');
+const droneSeriesConfig = require('../data/drone-series-config');
+const { loadDroneToc } = require('./lib/droneToc');
 const { loadPosts } = require('./lib/posts');
 const { slugify } = require('./lib/slugify');
 const { page, base, esc, abs } = require('./lib/templates');
@@ -184,35 +185,48 @@ function buildTagPages(posts) {
   return [...byTag.keys()].map((t) => `tags/${slugify(t)}.html`).concat('tags/index.html');
 }
 
-function buildSeriesPage() {
-  const sections = droneSeries.sections
-    .map((section) => {
-      const rows = section.weeks
-        .map(
-          (w) => `<div class="series-row">
-        <span class="n">#${String(w.n).padStart(2, '0')}</span>
-        <time datetime="${w.date}">${w.date}</time>
-        <div>
-          <div class="title-zh">${esc(w.zh)}</div>
-          <div class="title-en">${esc(w.en)}</div>
-        </div>
-      </div>`
-        )
-        .join('\n');
-      return `<div class="series-section">
-      <h2>${esc(section.title)}</h2>
-      ${rows}
-    </div>`;
-    })
-    .join('\n');
+function todayInLA() {
+  return new Intl.DateTimeFormat('en-CA', { timeZone: 'America/Los_Angeles' }).format(new Date());
+}
 
-  const body = `<p class="lede">${esc(droneSeries.seriesIntro)}</p>
-  ${sections}`;
+function formatMonthDay(dateStr) {
+  const [, m, d] = dateStr.match(/^\d{4}-(\d{2})-(\d{2})$/);
+  return `${Number(m)}/${Number(d)}`;
+}
+
+function seriesPostRowHtml(post, depth) {
+  const b = base(depth);
+  const titleEn = post.titleEn ? `<div class="title-en">${esc(post.titleEn)}</div>` : '';
+  const excerpt = post.excerpt ? `<div class="excerpt">${esc(post.excerpt)}</div>` : '';
+  return `<div class="post-row">
+    <time datetime="${post.dateStr}">${post.dateStr}</time>
+    <div>
+      <h2><a href="${b}${post.urlPath}">${esc(post.title)}</a></h2>
+      ${titleEn}
+      ${excerpt}
+    </div>
+  </div>`;
+}
+
+function buildSeriesPage(posts) {
+  const depth = 2;
+  const seriesPosts = posts.filter((p) => p.series === 'drone');
+  const rows = seriesPosts.map((p) => seriesPostRowHtml(p, depth)).join('\n');
+
+  const toc = loadDroneToc();
+  const next = toc.find((w) => w.date >= todayInLA());
+  const teaser = next
+    ? `<p class="series-teaser">下週：${esc(next.zh)}（${formatMonthDay(next.date)}）</p>`
+    : '';
+
+  const body = `<p class="lede">${esc(droneSeriesConfig.seriesIntro)}</p>
+  <div class="post-list">${rows || '<p class="lede">尚無已發布文章。</p>'}</div>
+  ${teaser}`;
 
   const html = page({
-    depth: 2,
-    title: `${droneSeries.seriesTitle} — ${config.siteTitle}`,
-    description: droneSeries.seriesIntro,
+    depth,
+    title: `${droneSeriesConfig.seriesTitle} — ${config.siteTitle}`,
+    description: droneSeriesConfig.seriesIntro,
     canonicalPath: 'series/drone/index.html',
     bodyHtml: body,
   });
@@ -229,7 +243,7 @@ function build() {
   buildHome(posts);
   buildPostPages(posts);
   const tagPaths = buildTagPages(posts);
-  buildSeriesPage();
+  buildSeriesPage(posts);
 
   copyDir(ASSETS_DIR, 'assets');
 

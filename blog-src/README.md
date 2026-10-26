@@ -37,14 +37,16 @@ runs server-side.
      image files under `assets/images/...`.
    - The permalink is derived from `date` (`YYYY/MM/`) and the filename (or
      an explicit `slug:` field) — not from where the file lives on disk.
+   - Add `series: "drone"` to front matter for posts that belong to the
+     "無人機連載" series — they then also appear on `series/drone/index.html`.
 
 2. **Build.**
    ```bash
    cd blog-src && npm install && npm run build
    ```
-   This regenerates `/blog` from scratch (posts, tag pages, the drone-series
-   TOC, `feed.xml`, `sitemap.xml`, `.nojekyll`) from `content/posts/` and
-   `data/drone-series.js`.
+   This regenerates `/blog` from scratch (posts, tag pages, the drone series
+   page, `feed.xml`, `sitemap.xml`, `.nojekyll`) from `content/posts/` and
+   `data/drone-series-config.js`.
 
 3. **Preview locally** before opening a PR — serve the repo's *parent*
    directory so the `/ChaoWeiLiao_Resume/blog/` prefix in `config.js`
@@ -64,14 +66,18 @@ currently set for the GitHub Pages subpath
 `https://blog.cwliao.com/`) is a two-line change: set `basePath: '/'` and
 `siteUrl` to the new origin, then rebuild.
 
-## The drone series TOC
+## The drone series page
 
-`data/drone-series.js` holds the 52-week table of contents for the "無人機
-連載" series (week number, date, bilingual title only — grouped by the
-table's original 篇 A–G sections). It renders at `series/drone/index.html`.
-Articles aren't written yet; don't add placeholder content there — add real
-posts under `content/posts/` as they're published, tagged so they show up
-in the normal post list and feed too.
+`series/drone/index.html` lists published posts tagged `series: "drone"`,
+plus a one-line teaser for the next upcoming week ("下週：...").
+`data/drone-series-config.js` only holds the series title/intro text — the
+full 52-week table of contents is a private planning doc and is never
+committed here. At build time, `src/lib/droneToc.js` reads it from
+`/home/box/blog-drone/HANDOFF.md` (override with `DRONE_TOC_PATH`); if that
+file is missing, the build still succeeds and the page just omits the
+teaser. The next-week teaser is computed from the build date (first TOC week
+whose date is on or after today in America/Los_Angeles) — no other week
+titles are ever written into the built output.
 
 ## Legacy import
 
