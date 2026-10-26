@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Install Spark and Scala on Ubuntu — 無人機與製造測試筆記</title>
+  <meta name="description" content="Previous &quot;Telnet to AWS EC2 instance&quot; Following are demonstration on AWS EC2 Ubuntu. Install Java sudo apt-add-repository ppa:webupd8team/ja…">
+  <link rel="canonical" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/install-spark-and-scala-on-ubuntu.html">
+  <link rel="alternate" type="application/rss+xml" title="無人機與製造測試筆記" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/feed.xml">
+  <meta property="og:site_name" content="無人機與製造測試筆記">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Install Spark and Scala on Ubuntu — 無人機與製造測試筆記">
+  <meta property="og:description" content="Previous &quot;Telnet to AWS EC2 instance&quot; Following are demonstration on AWS EC2 Ubuntu. Install Java sudo apt-add-repository ppa:webupd8team/ja…">
+  <meta property="og:url" content="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/install-spark-and-scala-on-ubuntu.html">
+  <meta property="og:image" content="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/assets/images/legacy/install-spark-and-scala-on-ubuntu/img-01.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Install Spark and Scala on Ubuntu — 無人機與製造測試筆記">
+  <meta name="twitter:description" content="Previous &quot;Telnet to AWS EC2 instance&quot; Following are demonstration on AWS EC2 Ubuntu. Install Java sudo apt-add-repository ppa:webupd8team/ja…">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=Noto+Serif+TC:wght@400;500&family=Inter:wght@400;500&family=Noto+Sans+TC:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container row">
+      <a class="site-mark" href="../../index.html">無人機與製造測試筆記<small>Drone &amp; Manufacturing Test Notes</small></a>
+      <nav class="site-nav">
+        <a href="../../index.html">文章 Posts</a>
+        <a href="../../series/drone/index.html">無人機連載</a>
+        <a href="../../tags/index.html">標籤 Tags</a>
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">回到履歷 Resume</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <article>
+    <div class="post-head">
+      <h1>Install Spark and Scala on Ubuntu</h1>
+      
+      <div class="post-meta">
+        <time datetime="2015-11-10">2015-11-10</time>
+        <div class="tags"><span class="tag-chip"><a href="../../tags/amazon.html">Amazon</a></span><span class="tag-chip"><a href="../../tags/big-data.html">Big Data</a></span><span class="tag-chip"><a href="../../tags/ec2.html">EC2</a></span><span class="tag-chip"><a href="../../tags/scala.html">Scala</a></span><span class="tag-chip"><a href="../../tags/spark.html">Spark</a></span></div>
+      </div>
+    </div>
+    <div class="lang-section">
+      
+      <div class="prose"><h2><a href="http://chaowei0731.blogspot.com/2015/11/telnet-to-aws-ec2-instance.html">Previous &quot;Telnet to AWS EC2 instance&quot;</a></h2>
+<p>Following are demonstration on AWS EC2 Ubuntu.</p>
+<h2>Install Java</h2>
+<p>sudo apt-add-repository ppa:webupd8team/java
+sudo apt-get update
+sudo apt-get install oracle-java8-installer</p>
+<h2>Install Git</h2>
+<p>sudo apt-get install git</p>
+<h2>Download Spark</h2>
+<p>This link is Spark 1.4.1 Pre-build for hadoop 2.6</p>
+<p>Link might be change. </p>
+<p>Please check <a href="http://spark.apache.org/downloads.html">http://spark.apache.org/downloads.html</a> , if following link missing.</p>
+<p>wget <a href="http://d3kbcqa49mib13.cloudfront.net/spark-1.4.1-bin-hadoop2.6.tgz">http://d3kbcqa49mib13.cloudfront.net/spark-1.4.1-bin-hadoop2.6.tgz</a>
+tar -xzf spark-1.4.1-bin-hadoop2.6.tgz</p>
+<h2>Install Scala</h2>
+<p>This demo use Scala version 2.10.4  </p>
+<p>wget  <a href="http://www.scala-lang.org/files/archive/scala-2.10.4.tgz">http://www.scala-lang.org/files/archive/scala-2.10.4.tgz</a>
+tar -xzf scala-2.10.4.tgz
+sudo apt-get install scala</p>
+<h2>Environment setup</h2>
+<p>Check your path of Spark, Scala and Java first, then</p>
+<p>vi ~/.bashrc</p>
+<p>Attache following  </p>
+<p># export environment variable
+export SPARK_HOME=/home/YourUserName/spark-1.4.1-bin-hadoop2.6
+export SCALA_HOME=/home/YourUserName/scala-2.10.4
+export JAVA_HOME=/usr/lib/jvm/java-8-oracle
+export PATH=$SCALA_HOME/bin:$SPARK_HOME/bin:$JAVA_HOME/bin:$PATH</p>
+<p>Reload bashrc  </p>
+<p>cd
+. .bashrc
+scala -version
+#Scala should update to 2.10.4</p>
+<h2>Result</h2>
+<p>spark-shell </p>
+<p><a href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEguRZPn-GqyGJ0i4zYG6WpDtrgIDI99bZpuVu4WDKg-NoGqFAzINwAf7cDsZk8IfuuTYyvSs5h8C_Hq_obPBWkrpjrxt4wyByXoLY6osqSxwPytrHP2YEcbKjmQRUWE0VvSC1ItWZxVIZuc/s1600/%25E8%259E%25A2%25E5%25B9%2595%25E6%2588%25AA%25E5%259C%2596+2015-11-10+02.45.15.png"><img src="../../assets/images/legacy/install-spark-and-scala-on-ubuntu/img-01.png" alt=""></a></p>
+</div>
+    </div>
+    <p class="legacy-note">原始出處 Originally published at <a href="https://chaowei0731.blogspot.com/2015/11/install-spark-and-scala-on-ubuntu.html">https://chaowei0731.blogspot.com/2015/11/install-spark-and-scala-on-ubuntu.html</a></p>
+  </article>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container row">
+      <span>ChaoWei Liao — 無人機系統、量產測試與驗證的工程筆記，繁中與英文對照。</span>
+      <span>
+        <a href="../../feed.xml">RSS</a> ·
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">ChaoWei Liao 履歷 / Resume</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
