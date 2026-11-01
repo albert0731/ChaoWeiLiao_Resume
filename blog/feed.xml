@@ -6,6 +6,13 @@
   <description>無人機系統、量產測試與驗證的工程筆記，繁中與英文對照。</description>
   <language>zh-tw</language>
   <item>
+    <title>無人機設計：為什麼要懂整台無人機，從需求到規格｜Drone System Design: From Mission to Spec</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/10/drone-system-design-mission-to-spec.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/10/drone-system-design-mission-to-spec.html</guid>
+    <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+    <description>無人機設計從任務出發：用標明假設值的懸停功率算例看續航與酬載取捨，整理台灣最大起飛重量法規門檻，附需求到規格檢查清單與本週亞拓、GUAVA、FCC 新聞。</description>
+  </item>
+  <item>
     <title>Big Data Step by Step</title>
     <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/big-data-step-by-step.html</link>
     <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/big-data-step-by-step.html</guid>

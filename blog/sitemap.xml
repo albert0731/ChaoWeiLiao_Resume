@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/index.html</loc></url>
   <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/series/drone/index.html</loc></url>
+  <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/tags/無人機開發-52-週.html</loc></url>
+  <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/tags/無人機設計.html</loc></url>
+  <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/tags/drone-system-design.html</loc></url>
   <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/tags/amazon.html</loc></url>
   <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/tags/big-data.html</loc></url>
   <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/tags/ec2.html</loc></url>
@@ -12,6 +15,7 @@
   <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/tags/embedded.html</loc></url>
   <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/tags/firmware.html</loc></url>
   <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/tags/index.html</loc></url>
+  <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/10/drone-system-design-mission-to-spec.html</loc></url>
   <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/big-data-step-by-step.html</loc></url>
   <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/connect-and-upload-files-to-aws-ec2-by.html</loc></url>
   <url><loc>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2015/11/first-spark-program-on-ec2.html</loc></url>
