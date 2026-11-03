@@ -77,6 +77,14 @@ function page({ depth, title, description, canonicalPath, bodyHtml, ogType, ogIm
 <html lang="${lang || 'zh-Hant'}">
 <head>
   ${head({ title, description, canonicalPath, depth, ogType, ogImage, lang })}
+  <!-- Google Analytics 4 (same property as the resume site) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G54CXENJJD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G54CXENJJD');
+  </script>
 </head>
 <body>
   ${header(depth)}
