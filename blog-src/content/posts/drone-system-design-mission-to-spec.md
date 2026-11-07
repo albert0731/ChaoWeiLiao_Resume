@@ -326,18 +326,6 @@ Sorted by date as given in the sources; undated items are at the end.
 
 ---
 
-## 本週行程：發文與 SEO｜This Week: Posts & SEO
-
-本週（10/31，週六）連載第 1 篇上線，就是這篇〈無人機設計：為什麼要懂整台無人機，從需求到規格〉。下週六 11/7 會發第 2 篇〈無人機架構全圖〉。平日每天整理無人機新聞，只收有來源連結的，週六一起放進「本週大新聞」。
-
-這篇在可讀性和搜尋上做了幾件事：標題、摘要和每一節都是中英對照；算例數字一律標明是示範假設值；法規引用到條號並附全國法規資料庫連結；新聞每則附原始報導；圖卡都寫了中英替代文字。
-
-The first post in the series went live this Saturday, October 31: the one you're reading. The second post, "Drone Architecture Map," comes out next Saturday, November 7. On weekdays I collect drone news, sourced items only, and roll it up into This Week's Big Drone News every Saturday.
-
-A few things this post does for readability and search: the title, summary and every section are bilingual; all worked-example numbers are labeled as hypothetical; regulations are cited by article number with a link to the official database; every news item links to its original reports; and every image card has descriptive alt text in both languages.
-
----
-
 **Albert｜無人機工程師｜Drone Engineer**
 
 履歷｜Resume：[cwliao.com](https://cwliao.com)
