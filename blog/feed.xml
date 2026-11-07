@@ -6,6 +6,13 @@
   <description>無人機系統、量產測試與驗證的工程筆記，繁中與英文對照。</description>
   <language>zh-tw</language>
   <item>
+    <title>無人機架構全圖：子系統怎麼接，飛控和任務電腦為什麼分層｜UAV Architecture Map: Interfaces, Data Flow, Flight vs Mission Computer</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/uav-architecture-map-flight-mission-computer.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/uav-architecture-map-flight-mission-computer.html</guid>
+    <pubDate>Sat, 07 Nov 2026 00:00:00 GMT</pubDate>
+    <description>無人機架構全圖：飛控、感測、電調、通訊與任務電腦怎麼接，整理 DShot、DroneCAN、MAVLink、uXRCE-DDS 介面，說明飛控和任務電腦為何分層。</description>
+  </item>
+  <item>
     <title>無人機設計：為什麼要懂整台無人機，從需求到規格｜Drone System Design: From Mission to Spec</title>
     <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/10/drone-system-design-mission-to-spec.html</link>
     <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/10/drone-system-design-mission-to-spec.html</guid>
