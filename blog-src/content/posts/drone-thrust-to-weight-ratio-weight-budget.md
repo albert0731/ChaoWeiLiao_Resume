@@ -4,7 +4,6 @@ titleEn: "Thrust-to-Weight Ratio in Practice: Building a Drone Weight and Thrust
 date: "2026-11-14"
 slug: drone-thrust-to-weight-ratio-weight-budget
 series: drone
-draft: true
 tags: ["無人機開發 52 週", "推重比", "thrust-to-weight ratio", "weight budget", "ArduPilot"]
 excerpt: "推重比不是越大越好：用標明假設值的重量預算表，看質量成長裕度、電池電壓、空氣密度怎麼吃掉推力餘裕，再用飛行日誌的懸停油門回頭校正。附本週無人機新聞。"
 excerptEn: "Thrust-to-weight ratio in practice: a drone weight budget with growth allowance, battery sag and air density, checked against hover throttle logs."
