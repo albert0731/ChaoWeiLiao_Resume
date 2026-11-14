@@ -6,6 +6,13 @@
   <description>無人機系統、量產測試與驗證的工程筆記，繁中與英文對照。</description>
   <language>zh-tw</language>
   <item>
+    <title>推重比怎麼抓：無人機重量與推力預算表實作｜Thrust-to-Weight Ratio in Practice: Building a Drone Weight and Thrust Budget</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/drone-thrust-to-weight-ratio-weight-budget.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/drone-thrust-to-weight-ratio-weight-budget.html</guid>
+    <pubDate>Sat, 14 Nov 2026 00:00:00 GMT</pubDate>
+    <description>推重比不是越大越好：用標明假設值的重量預算表，看質量成長裕度、電池電壓、空氣密度怎麼吃掉推力餘裕，再用飛行日誌的懸停油門回頭校正。附本週無人機新聞。</description>
+  </item>
+  <item>
     <title>無人機架構全圖：子系統怎麼接，飛控和任務電腦為什麼分層｜UAV Architecture Map: Interfaces, Data Flow, Flight vs Mission Computer</title>
     <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/uav-architecture-map-flight-mission-computer.html</link>
     <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/uav-architecture-map-flight-mission-computer.html</guid>

@@ -214,7 +214,8 @@ function buildSeriesPage(posts) {
   const rows = seriesPosts.map((p) => seriesPostRowHtml(p, depth)).join('\n');
 
   const toc = loadDroneToc();
-  const next = toc.find((w) => w.date >= todayInLA());
+  const publishedDates = new Set(seriesPosts.map((p) => p.dateStr));
+  const next = toc.find((w) => !publishedDates.has(w.date) && w.date >= todayInLA());
   const teaser = next
     ? `<p class="series-teaser">下週：${esc(next.zh)}（${formatMonthDay(next.date)}）</p>`
     : '';
