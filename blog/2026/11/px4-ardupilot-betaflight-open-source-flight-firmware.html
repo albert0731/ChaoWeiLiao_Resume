@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>開源飛控韌體怎麼選：PX4、ArduPilot、Betaflight 的授權、社群與 RTOS | Choosing PX4, ArduPilot or Betaflight: Licenses, Communities and RTOS — 無人機與製造測試筆記</title>
+  <meta name="description" content="PX4、ArduPilot、Betaflight 怎麼選？對照官方授權檔與文件，比較 BSD-3 與 GPLv3、NuttX 與 ChibiOS、適用機種和社群。附本週無人機新聞。">
+  <link rel="canonical" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/px4-ardupilot-betaflight-open-source-flight-firmware.html">
+  <link rel="alternate" type="application/rss+xml" title="無人機與製造測試筆記" href="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/feed.xml">
+  <meta property="og:site_name" content="無人機與製造測試筆記">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="開源飛控韌體怎麼選：PX4、ArduPilot、Betaflight 的授權、社群與 RTOS | Choosing PX4, ArduPilot or Betaflight: Licenses, Communities and RTOS — 無人機與製造測試筆記">
+  <meta property="og:description" content="PX4、ArduPilot、Betaflight 怎麼選？對照官方授權檔與文件，比較 BSD-3 與 GPLv3、NuttX 與 ChibiOS、適用機種和社群。附本週無人機新聞。">
+  <meta property="og:url" content="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/px4-ardupilot-betaflight-open-source-flight-firmware.html">
+  <meta property="og:image" content="https://albert0731.github.io/ChaoWeiLiao_Resume/blog/assets/images/drone/w47-compare.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="開源飛控韌體怎麼選：PX4、ArduPilot、Betaflight 的授權、社群與 RTOS | Choosing PX4, ArduPilot or Betaflight: Licenses, Communities and RTOS — 無人機與製造測試筆記">
+  <meta name="twitter:description" content="PX4、ArduPilot、Betaflight 怎麼選？對照官方授權檔與文件，比較 BSD-3 與 GPLv3、NuttX 與 ChibiOS、適用機種和社群。附本週無人機新聞。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;1,8..60,400&family=Noto+Serif+TC:wght@400;500&family=Inter:wght@400;500&family=Noto+Sans+TC:wght@400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/style.css">
+  <!-- Google Analytics 4 (same property as the resume site) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-G54CXENJJD"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-G54CXENJJD');
+  </script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container row">
+      <a class="site-mark" href="../../index.html">無人機與製造測試筆記<small>Drone &amp; Manufacturing Test Notes</small></a>
+      <nav class="site-nav">
+        <a href="../../index.html">文章 Posts</a>
+        <a href="../../series/drone/index.html">無人機連載</a>
+        <a href="../../tags/index.html">標籤 Tags</a>
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">回到履歷 Resume</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <article>
+    <div class="post-head">
+      <h1>開源飛控韌體怎麼選：PX4、ArduPilot、Betaflight 的授權、社群與 RTOS</h1>
+      <div class="title-en">Choosing PX4, ArduPilot or Betaflight: Licenses, Communities and RTOS</div>
+      <div class="post-meta">
+        <time datetime="2026-11-21">2026-11-21</time>
+        <div class="tags"><span class="tag-chip"><a href="../../tags/%E7%84%A1%E4%BA%BA%E6%A9%9F%E9%96%8B%E7%99%BC-52-%E9%80%B1.html">無人機開發 52 週</a></span><span class="tag-chip"><a href="../../tags/px4.html">PX4</a></span><span class="tag-chip"><a href="../../tags/ardupilot.html">ArduPilot</a></span><span class="tag-chip"><a href="../../tags/betaflight.html">Betaflight</a></span><span class="tag-chip"><a href="../../tags/nuttx.html">NuttX</a></span><span class="tag-chip"><a href="../../tags/%E9%A3%9B%E6%8E%A7%E9%9F%8C%E9%AB%94.html">飛控韌體</a></span></div>
+      </div>
+    </div>
+    <div class="lang-section">
+      
+      <div class="prose"><p><strong>摘要：</strong> 開源飛控韌體主流就三套：PX4、ArduPilot、Betaflight。這篇直接翻官方原始碼庫的授權檔和文件，比較它們的授權（BSD-3 和 GPLv3）、底下跑的作業系統（NuttX、ChibiOS、Betaflight 自己的排程器）、適用機種和社群治理，最後講我會怎麼選。後半是本週無人機新聞與下週看點。</p>
+<p><strong>Summary:</strong> There are three mainstream open-source flight firmwares: PX4, ArduPilot and Betaflight. This post goes straight to each project&#39;s license file and official docs to compare licensing (BSD-3 vs GPLv3), the OS underneath (NuttX, ChibiOS, Betaflight&#39;s own scheduler), supported vehicles and governance, then explains how I&#39;d choose. The second half covers this week&#39;s drone news and what to watch next.</p>
+<hr>
+<h2>開場：同一週，三個開源社群都有動靜｜Opening: One Week, Three Open-Source Projects Moving</h2>
+<p>這週剛好很適合談飛控韌體。</p>
+<p>11/19，ArduPilot 發布 Copter 4.7.3 穩定版。公告裡說這版修了一個重要的振動失效保護（Vibration failsafe）問題，強烈建議用 4.7.0 到 4.7.2 的多旋翼和傳統直升機使用者更新；另外提醒 <code>ATC_INPUT_TC</code> 從 4.6 到 4.7 的縮放和預設值變小了，自己改過這個參數的人要乘 0.66 才能維持一樣的手感（<a href="https://discuss.ardupilot.org/t/copter-4-7-3-released/146256">ArduPilot 論壇公告</a>、<a href="https://github.com/ArduPilot/ardupilot/releases/tag/Copter-4.7.3">GitHub Release</a>）。</p>
+<p>PX4 那邊，託管 PX4 的 Dronecode 基金會 11/16 宣布韓國 Quantum Aero 以白金會員加入，創辦人進董事會；11/17 再宣布荷蘭的 HEIGHT Technologies 以銀級會員加入，這家做國防與公共安全用的小型無人機，基金會文章也提到它 2025 年向 Auterion 下單，用 Auterion 的飛控軟體堆疊驅動 500 套以上 ISR 系統（<a href="https://dronecode.org/dronecode-welcomes-quantum-aero-as-a-platinum-member/">Dronecode：Quantum Aero</a>、<a href="https://dronecode.org/dronecode-welcomes-height-technologies-as-a-silver-member/">Dronecode：HEIGHT</a>）。</p>
+<p>還有一則比較少人注意：美國陸軍的 FPV 製造競賽（後面新聞第 3 則）要求國防合約管理署拆機檢查，確認沒有受管制外國對手的硬體、晶片或<strong>韌體</strong>（<a href="https://dronenr.com/2026/11/17/army-manufacturing-rodeo-fpv-drones/">dronenr</a>）。韌體也被當成供應鏈的一部分在查了。</p>
+<p><a href="../../2026/11/drone-thrust-to-weight-ratio-weight-budget.html">上一篇〈推重比怎麼抓〉</a>把動力和重量算完了，<a href="../../2026/11/uav-architecture-map-flight-mission-computer.html">〈無人機架構全圖〉</a>則把飛控放在架構的中間。這篇往飛控裡面看一層：上面跑哪套韌體，以及這個選擇會帶來什麼責任。</p>
+<p>This is a good week to talk about flight firmware.</p>
+<p>On November 19, ArduPilot released Copter 4.7.3 as stable. The announcement calls out an important fix to the vibration failsafe and strongly recommends that multicopter and tradheli users on 4.7.0–4.7.2 update. It also warns that <code>ATC_INPUT_TC</code> scaling and defaults were reduced from 4.6 to 4.7, so anyone who changed it should multiply by 0.66 to keep the same feel (<a href="https://discuss.ardupilot.org/t/copter-4-7-3-released/146256">ArduPilot forum</a>, <a href="https://github.com/ArduPilot/ardupilot/releases/tag/Copter-4.7.3">GitHub release</a>).</p>
+<p>On the PX4 side, the Dronecode Foundation, which hosts PX4, announced Korea&#39;s Quantum Aero as a Platinum member on November 16, with its founder joining the board, and the Netherlands&#39; HEIGHT Technologies as a Silver member on November 17. The foundation notes HEIGHT ordered Auterion&#39;s flight stack in 2025 to power more than 500 ISR systems (<a href="https://dronecode.org/dronecode-welcomes-quantum-aero-as-a-platinum-member/">Dronecode: Quantum Aero</a>, <a href="https://dronecode.org/dronecode-welcomes-height-technologies-as-a-silver-member/">Dronecode: HEIGHT</a>).</p>
+<p>And one detail that got less attention: the US Army&#39;s FPV Manufacturing Rodeo (news item 3 below) will use teardown inspections to confirm there&#39;s no covered foreign-adversary hardware, chips or <strong>firmware</strong> (<a href="https://dronenr.com/2026/11/17/army-manufacturing-rodeo-fpv-drones/">dronenr</a>). Firmware is part of the supply chain now.</p>
+<p><a href="../../2026/11/drone-thrust-to-weight-ratio-weight-budget.html">Last week</a> we closed the thrust and weight budget, and <a href="../../2026/11/uav-architecture-map-flight-mission-computer.html">the architecture map</a> put the flight controller at the center. This post opens the flight controller one more layer: which firmware runs on it, and what that choice commits you to.</p>
+<hr>
+<h2>1. 三套韌體一張表｜The Three Firmwares on One Page</h2>
+<p>先把官方查得到的事實排在一起。每一格都對過原始碼庫或官方文件。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>PX4</th>
+<th>ArduPilot</th>
+<th>Betaflight</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>授權｜License</td>
+<td>BSD 3-Clause（<a href="https://github.com/PX4/PX4-Autopilot/blob/main/LICENSE">LICENSE</a>）</td>
+<td>GPLv3（<a href="https://github.com/ArduPilot/ardupilot/blob/master/COPYING.txt">COPYING.txt</a>、<a href="https://ardupilot.org/dev/docs/license-gplv3.html">授權頁</a>）</td>
+<td>GPLv3（<a href="https://github.com/betaflight/betaflight/blob/master/LICENSE">LICENSE</a>）</td>
+</tr>
+<tr>
+<td>飛控板上的 OS｜OS on the FC</td>
+<td>NuttX 為主；也可跑在 Linux、macOS 等 POSIX 系統（<a href="https://docs.px4.io/main/en/concept/architecture.html">架構文件</a>）</td>
+<td>STM32 板用 ChibiOS；另有 Linux、ESP32 的 HAL（<a href="https://ardupilot.org/dev/docs/learning-ardupilot-introduction.html">開發者文件</a>）</td>
+<td>自己的任務排程器，沒有通用 RTOS（<a href="https://github.com/betaflight/betaflight/blob/master/src/main/scheduler/scheduler.c">scheduler.c</a>）</td>
+</tr>
+<tr>
+<td>官方列的機種｜Vehicles</td>
+<td>多旋翼、固定翼、VTOL、地面車，還有其他實驗平台（<a href="https://github.com/PX4/PX4-Autopilot#readme">README</a>）</td>
+<td>Copter、Plane、Rover、Sub、AntennaTracker（<a href="https://github.com/ArduPilot/ardupilot#readme">README</a>）</td>
+<td>競速、花式、空拍、長航程、微型機和飛翼（<a href="https://github.com/betaflight/betaflight#readme">README</a>）</td>
+</tr>
+<tr>
+<td>治理｜Governance</td>
+<td>Dronecode 基金會託管，屬 Linux 基金會</td>
+<td>ArduPilot 開發團隊與社群，有企業贊助的 Partners 計畫；2010 年開始開發</td>
+<td>Betaflight 團隊，官方說「小、而且大多是志工」</td>
+</tr>
+<tr>
+<td>對外介面｜Interfaces</td>
+<td>MAVLink、DDS／ROS 2</td>
+<td>MAVLink、ROS 2</td>
+<td>Betaflight App 設定；MSP、CRSF 等遙測</td>
+</tr>
+<tr>
+<td>最新穩定版（11/21）｜Latest stable</td>
+<td>v1.17（<a href="https://dronecode.org/">Dronecode</a>）</td>
+<td>Copter 4.7.3（11/19）</td>
+<td>2026.6.2（<a href="https://github.com/betaflight/betaflight/releases">GitHub Releases</a>）</td>
+</tr>
+</tbody></table>
+<p><img src="../../assets/images/drone/w47-compare.png" alt="PX4、ArduPilot、Betaflight 比較表：授權、作業系統、機種與治理（資料來源為各專案官方原始碼庫與文件）｜PX4 vs ArduPilot vs Betaflight: license, OS, vehicles and governance (from each project&#39;s official repository and docs)"></p>
+<p>一句話版本：PX4 和 ArduPilot 是「自駕儀」（autopilot），從一開始就是為了自主任務、多種載具；Betaflight 是為了「人在飛」的 FPV 多旋翼，把手感和延遲做到極致。所以它們比較像不同用途的工具，拿來互相比分數意義不大。</p>
+<p>Here are the facts side by side, each checked against the project&#39;s repository or official docs (table above).</p>
+<p>The one-line version: PX4 and ArduPilot are autopilots, built from the start for autonomous missions across many vehicle types. Betaflight is built for FPV multirotors flown by a human, tuned hard for feel and latency. They&#39;re tools for different jobs, so scoring them against each other doesn&#39;t tell you much.</p>
+<hr>
+<h2>2. 授權：BSD-3 和 GPLv3 對產品的差別｜Licensing: What BSD-3 and GPLv3 Mean for a Product</h2>
+<p>先說清楚：我是工程師不是律師，下面是讀授權原文和專案官方說明的理解，真要出貨請找法務。</p>
+<p><strong>PX4 用 BSD 3-Clause。</strong> 授權檔只有三個條件：散布原始碼要保留版權聲明和免責聲明；散布二進位檔要在文件或其他附帶資料裡附上同樣的聲明；不能用版權人或貢獻者的名字替你的產品背書（<a href="https://github.com/PX4/PX4-Autopilot/blob/main/LICENSE">PX4 LICENSE</a>）。PX4 的 README 直接寫它是「對商業友善的 BSD-3 授權」，你可以用、改、散布在自己的專案裡（<a href="https://github.com/PX4/PX4-Autopilot#readme">PX4 README</a>）。白話講：改了可以不公開。</p>
+<p><strong>ArduPilot 和 Betaflight 用 GPLv3。</strong> 兩邊原始碼檔頭都寫「GPL 第 3 版，或（依你選擇）任何更新的版本」（例如 <a href="https://github.com/ArduPilot/ardupilot/blob/master/ArduCopter/Copter.cpp">ArduCopter/Copter.cpp</a>、<a href="https://github.com/betaflight/betaflight/blob/master/src/main/scheduler/scheduler.c">Betaflight scheduler.c</a>）。ArduPilot 的授權頁對「把軟體放進產品賣的公司」寫得很具體：要告訴客戶這是開源軟體，並在產品裡附上實際原始碼，或提供可以取得原始碼的連結；也希望衍生作品保留原本的貢獻者名單（<a href="https://ardupilot.org/dev/docs/license-gplv3.html">ArduPilot 授權頁</a>）。</p>
+<p>同一頁還解釋他們為什麼選 GPL：要求把修正回饋出來（至少要給終端客戶），能增加貢獻者之間的合作，避免大家把小改進藏起來、最後分裂成一堆不相容的分支；而「v3」這部分是確保買機器的客戶有權升級或更換飛控上的 ArduPilot 版本，就算廠商不再支援，產品也能繼續用（<a href="https://ardupilot.org/dev/docs/license-gplv3.html">ArduPilot 授權頁</a>）。</p>
+<p>這對做產品的團隊代表什麼？我的看法：</p>
+<ul>
+<li>如果你的核心價值在<strong>飛控演算法本身</strong>，而且不想公開改動，BSD-3 的 PX4 比較好處理，PX4 自己也把這點當成對商業友善的賣點。</li>
+<li>如果你的價值在<strong>任務電腦、酬載、地面站、整合和服務</strong>，飛控只是穩定的基礎，GPLv3 的 ArduPilot 一樣能做商品；只是要把「交付原始碼」這件事排進出貨流程，像 BOM 一樣管理。</li>
+<li>不管哪一套，台灣工程會 9 月版無人機採購指引已經加了 SBOM（軟體物料清單）要求（<a href="https://udn.com/news/story/10930/9883789">中央社／聯合新聞網</a>）。SBOM 裡每一個元件都會有授權欄位，所以授權不是法務最後才看的東西，是設計初期就要定的。</li>
+</ul>
+<p>First, a caveat: I&#39;m an engineer, not a lawyer. This is my reading of the license texts and the projects&#39; own explanations. Talk to counsel before you ship.</p>
+<p><strong>PX4 is BSD 3-Clause.</strong> The license has three conditions: keep the copyright notice and disclaimer in source redistributions; reproduce them in the documentation or other materials for binary redistributions; and don&#39;t use the copyright holder&#39;s or contributors&#39; names to endorse your product (<a href="https://github.com/PX4/PX4-Autopilot/blob/main/LICENSE">PX4 LICENSE</a>). The README calls it a &quot;business-friendly BSD-3 license&quot; that lets you use, modify and distribute the code in your own projects. In plain terms, you can keep your changes private.</p>
+<p><strong>ArduPilot and Betaflight are GPLv3.</strong> Source headers in both say &quot;version 3 of the License, or (at your option) any later version.&quot; ArduPilot&#39;s license page is specific for companies shipping it in products: tell customers the software is open source, and provide the actual source code in the product or a link to where it can be found; it also asks that derivative works keep the original contributor credits (<a href="https://ardupilot.org/dev/docs/license-gplv3.html">ArduPilot license page</a>).</p>
+<p>The same page explains the choice. Requiring fixes to flow back (at least to the end customer) increases cooperation and avoids a pile of incompatible forks. The &quot;v3&quot; part ensures the customer who bought the vehicle has the right to upgrade or replace the ArduPilot version on the flight controller, so the product stays useful even if the maker stops supporting it.</p>
+<p>What this means for a product team, in my view:</p>
+<ul>
+<li>If your core value is the <strong>flight control code itself</strong> and you don&#39;t want to publish changes, BSD-3 PX4 is simpler, and PX4 itself pitches the license as business-friendly.</li>
+<li>If your value is in the <strong>mission computer, payload, ground station, integration and service</strong>, with the autopilot as a stable base, GPLv3 ArduPilot works fine commercially. You just need &quot;deliver source&quot; in the shipping checklist, managed like a BOM.</li>
+<li>Either way, Taiwan&#39;s procurement guideline for drones added an SBOM requirement in its September revision (<a href="https://udn.com/news/story/10930/9883789">CNA via UDN</a>). Every SBOM entry has a license field, so licensing is a design-phase decision, not a last-minute legal check.</li>
+</ul>
+<hr>
+<h2>3. RTOS：NuttX、ChibiOS，和 Betaflight 的排程器｜RTOS: NuttX, ChibiOS and Betaflight&#39;s Scheduler</h2>
+<p>飛控上的程式要在固定時間內做完固定的事：讀陀螺儀、跑濾波、算控制、輸出馬達。晚了就是姿態抖。即時作業系統（RTOS）的工作，就是讓重要的事準時發生。</p>
+<p><strong>PX4 跑在 NuttX 上。</strong> NuttX 是 Apache 軟體基金會的開源即時作業系統，主要遵循 POSIX 和 ANSI 標準，可以從 8 位元縮放到 64 位元的微控制器（<a href="https://nuttx.apache.org/">Apache NuttX</a>），授權是 Apache License 2.0（<a href="https://github.com/apache/nuttx/blob/master/LICENSE">NuttX LICENSE</a>）。PX4 文件說 NuttX 是飛控板上跑 PX4 的主要 RTOS；PX4 本身需要的是有 POSIX API、有某種即時排程（例如 FIFO）的作業系統，所以同一套程式也能跑在 Linux、macOS 或 QuRT（<a href="https://docs.px4.io/main/en/concept/architecture.html">PX4 架構文件</a>）。</p>
+<p>PX4 的模組有兩種跑法：一種是獨立的 task，有自己的堆疊和優先權；一種是放進共用的 work queue，省 RAM、少切換，但不能 sleep、不能做阻塞式 IO。模組之間用 uORB 這個發布／訂閱訊息匯流排溝通。文件也舉例：多數 IMU 驅動以 1 kHz 取樣、積分後用 250 Hz 發布，實際頻率可以用 <code>uorb top</code> 看（<a href="https://docs.px4.io/main/en/concept/architecture.html">PX4 架構文件</a>）。</p>
+<p><strong>ArduPilot 在 STM32 板上用 ChibiOS。</strong> ArduPilot 的開發者文件說，它靠一層 AP_HAL（硬體抽象層）移植到不同平台：<code>AP_HAL_ChibiOS</code> 給 STM32 板、<code>AP_HAL_ESP32</code> 給 ESP32、<code>AP_HAL_Linux</code> 給 Linux 板；ChibiOS 是以外部程式碼樹的方式引入（<a href="https://ardupilot.org/dev/docs/learning-ardupilot-introduction.html">ArduPilot 開發者文件</a>）。上層的 EKF、PID、感測器驅動等函式庫各種載具共用。</p>
+<p><strong>Betaflight 走另一條路。</strong> 原始碼裡看不到 NuttX、ChibiOS 這類通用 RTOS；<code>lib/main</code> 裡放的是 STM32、AT32、GD32 等晶片廠的驅動庫，排程是自己寫的（<a href="https://github.com/betaflight/betaflight/tree/master/lib/main">lib/main</a>）。排程器原始碼裡有一行註解很直白：「即時的陀螺儀／濾波／PID 任務擁有完全優先權」（<a href="https://github.com/betaflight/betaflight/blob/master/src/main/scheduler/scheduler.c">scheduler.c</a>）。其他事情（OSD、遙測、LED）都排在後面，有空才做。</p>
+<p>為什麼差這麼多？我的理解是目標不同。PX4、ArduPilot 要同時跑導航、任務、日誌、多種通訊，工作量變化大，需要一個真正的作業系統來分配；Betaflight 只想把「陀螺儀到馬達」這條路做到最短、最穩，不需要的東西就不要。</p>
+<p><img src="../../assets/images/drone/w47-layers.png" alt="三套韌體的軟體分層：PX4（飛行堆疊／uORB／NuttX）、ArduPilot（載具程式／函式庫／AP_HAL／ChibiOS）、Betaflight（任務／自製排程器／晶片驅動）｜Software layers: PX4 (flight stack / uORB / NuttX), ArduPilot (vehicle code / libraries / AP_HAL / ChibiOS), Betaflight (tasks / own scheduler / vendor drivers)"></p>
+<p>Flight code has to finish fixed work on a fixed schedule: read the gyro, filter, run the controllers, drive the motors. Late means wobble. An RTOS&#39;s job is to make the important things happen on time.</p>
+<p><strong>PX4 runs on NuttX.</strong> NuttX is an Apache Software Foundation open-source RTOS built around POSIX and ANSI standards, scaling from 8-bit to 64-bit microcontrollers (<a href="https://nuttx.apache.org/">Apache NuttX</a>), under the Apache License 2.0 (<a href="https://github.com/apache/nuttx/blob/master/LICENSE">LICENSE</a>). PX4&#39;s docs call NuttX the primary RTOS for PX4 on a flight controller; PX4 needs a POSIX API with some real-time scheduling (e.g. FIFO), so the same code also runs on Linux, macOS or QuRT (<a href="https://docs.px4.io/main/en/concept/architecture.html">PX4 architecture</a>).</p>
+<p>PX4 modules run either as tasks, with their own stack and priority, or on shared work queues, which save RAM and context switches but can&#39;t sleep or do blocking IO. Modules talk over uORB, a publish/subscribe bus. The docs note that most IMU drivers sample at 1 kHz, integrate and publish at 250 Hz, and you can check real rates with <code>uorb top</code>.</p>
+<p><strong>ArduPilot uses ChibiOS on STM32 boards.</strong> Its developer docs describe an AP_HAL hardware abstraction layer: <code>AP_HAL_ChibiOS</code> for STM32 boards, <code>AP_HAL_ESP32</code> for ESP32 and <code>AP_HAL_Linux</code> for Linux boards, with ChibiOS pulled in as an external tree (<a href="https://ardupilot.org/dev/docs/learning-ardupilot-introduction.html">ArduPilot dev docs</a>). Libraries such as the EKF, PID controllers and sensor drivers are shared across vehicle types.</p>
+<p><strong>Betaflight takes a different path.</strong> There&#39;s no general-purpose RTOS like NuttX or ChibiOS in the tree; <code>lib/main</code> holds chip-vendor driver libraries for STM32, AT32, GD32 and others, and the scheduler is its own. One comment in the scheduler says it plainly: &quot;Realtime gyro/filtering/PID tasks get complete priority&quot; (<a href="https://github.com/betaflight/betaflight/blob/master/src/main/scheduler/scheduler.c">scheduler.c</a>). OSD, telemetry and LEDs wait their turn.</p>
+<p>Why so different? Different goals, as I read it. PX4 and ArduPilot juggle navigation, missions, logging and several links with a varying workload, so they need a real OS to share the CPU. Betaflight wants the gyro-to-motor path as short and steady as possible and leaves everything else out.</p>
+<hr>
+<h2>4. 適用機種與社群｜Vehicles and Community</h2>
+<p><strong>PX4：</strong> 官方列多旋翼、固定翼、VTOL、地面車，所有機架共用同一套程式碼（含船、潛艇等其他機器人）（<a href="https://docs.px4.io/main/en/concept/architecture.html">PX4 架構文件</a>）。硬體走 Pixhawk 生態系，模擬有 SITL、HITL，README 甚至給了一行 Docker 指令就能跑模擬（<a href="https://github.com/PX4/PX4-Autopilot#readme">PX4 README</a>）。社群在 Discord、PX4 Discuss 論壇，還有每週開放的開發者會議。治理上，Dronecode 持有 PX4 商標，README 寫明「沒有單一公司擁有名稱或控制路線圖」。</p>
+<p><strong>ArduPilot：</strong> README 說它能控制「幾乎任何載具」，從固定翼、quadplane、多旋翼、直升機，到地面車、船、平衡車和潛艇；2010 年起開發（<a href="https://github.com/ArduPilot/ardupilot#readme">ArduPilot README</a>）。地面站有 Mission Planner、MAVProxy，也能用 QGroundControl；4.7.3 的公告就寫可以用 Mission Planner 或 QGC 下載（<a href="https://discuss.ardupilot.org/t/copter-4-7-3-released/146256">公告</a>）。支援論壇 discuss.ardupilot.org 很活躍，Release notes 每一條都附 PR 編號和作者，追問題很方便。</p>
+<p><strong>Betaflight：</strong> 官方說法是給「每一種無人機」的飛控軟體，涵蓋競速、花式、空拍、長航程、微型機和飛翼；支援 STM32 F4／F7／G4／H5／H7、AT32F435、APM32、RP2350 等處理器，馬達協定有 DShot、Oneshot、Multishot 等，內建 Blackbox 記錄（<a href="https://github.com/betaflight/betaflight#readme">Betaflight README</a>）。它有 GPS Rescue，但官方定位是「進階安全功能」：遙控或圖傳斷線時自動飛回來，直到夠近可以重新接手（<a href="https://betaflight.com/docs/wiki/guides/current/GPS-Rescue">Betaflight GPS Rescue</a>），不是航點任務系統。版本從 4.x 改成年月制，每年 6 月和 12 月各一個主要版本（<a href="https://betaflight.com/blog/2025/09/01/Calendar%20Versioning%20Change">Betaflight 公告</a>）。硬體政策也講明：Betaflight 修韌體，硬體由製造商負責，接線和調參是飛手自己的事（<a href="https://betaflight.com/docs/development/manufacturer/hardware-policy">硬體政策</a>）。</p>
+<p><strong>PX4:</strong> Officially supports multirotors, fixed-wing, VTOL and rovers, with all airframes sharing one codebase (including boats, subs and other robots) (<a href="https://docs.px4.io/main/en/concept/architecture.html">PX4 architecture</a>). Hardware centers on the Pixhawk ecosystem; there&#39;s SITL and HITL, and the README runs a simulator with one Docker command. Community lives on Discord, the PX4 Discuss forum and a weekly open dev call. Dronecode holds the PX4 trademarks, and the README says no single company owns the name or controls the roadmap.</p>
+<p><strong>ArduPilot:</strong> The README says it can control &quot;almost any vehicle system imaginable,&quot; from planes, quadplanes, multirotors and helicopters to rovers, boats, balance bots and submarines, in development since 2010. Ground stations include Mission Planner and MAVProxy, and QGroundControl works too; the 4.7.3 announcement says to download it via Mission Planner or QGC. The support forum is active, and release notes list a PR number and author on every line, which makes tracing issues easy.</p>
+<p><strong>Betaflight:</strong> Describes itself as flight control software for every kind of drone: racing, freestyle, cinematic, long range, micros and wings. It supports STM32 F4/F7/G4/H5/H7, AT32F435, APM32 and RP2350, DShot and other motor protocols, and Blackbox logging (<a href="https://github.com/betaflight/betaflight#readme">Betaflight README</a>). GPS Rescue exists, but it&#39;s billed as an advanced safety feature that flies the craft home after RC or video loss until you can take over (<a href="https://betaflight.com/docs/wiki/guides/current/GPS-Rescue">GPS Rescue</a>), not a waypoint mission system. Versioning moved from 4.x to calendar versions, with major releases each June and December (<a href="https://betaflight.com/blog/2025/09/01/Calendar%20Versioning%20Change">announcement</a>). Its hardware policy is blunt: Betaflight fixes the firmware, manufacturers support their hardware, pilots own their builds (<a href="https://betaflight.com/docs/development/manufacturer/hardware-policy">hardware policy</a>).</p>
+<hr>
+<h2>5. 我會怎麼選｜How I&#39;d Choose</h2>
+<p>「哪一套最好」我通常答不出來，要看情況。我會先問四個問題：</p>
+<ol>
+<li><strong>要不要自主飛？</strong> 要航點、任務、Offboard、和任務電腦接 ROS 2，就在 PX4 和 ArduPilot 之間選。只是人飛、追求手感，Betaflight。</li>
+<li><strong>改動要不要公開？</strong> 飛控演算法是你的核心價值、又不想公開，PX4 的 BSD-3 比較好處理。能接受交付原始碼，ArduPilot 的 GPLv3 不是問題。</li>
+<li><strong>什麼機種？</strong> 固定翼、VTOL、地面車，兩套自駕儀都支援，船和潛艇兩邊文件也都有提到；我的印象是 ArduPilot 在「冷門機種」的覆蓋更廣，PX4 則有一個基金會和一群會員公司在推。FPV 穿越機和小型多旋翼，Betaflight 生態最完整。</li>
+<li><strong>誰要維護它？</strong> 這是最常被忽略的。韌體會一直更新，像這週 ArduPilot 4.7.3 修振動保護、參數縮放也變了。你的團隊要有人追版本、讀 release notes、在 SITL 和實機上回歸測試。選一套你的團隊追得動的。</li>
+</ol>
+<p>以陸軍的 FPV 競賽為例：一架單價上限 3,000 美元、馬達和機架由陸軍提供的 7 吋、10 吋 FPV，又要在電子干擾下飛、還要拆機查韌體來源（<a href="https://dronenr.com/2026/11/17/army-manufacturing-rodeo-fpv-drones/">dronenr</a>）。公告沒有指定用哪套韌體。但「查得出韌體來源」這一條，對能交出完整原始碼和版本紀錄的團隊比較有利；這是我的推論，我猜之後會有更多標案這樣寫。</p>
+<p>I can&#39;t usually answer &quot;which one is best.&quot; I ask four questions first:</p>
+<ol>
+<li><strong>Does it need to fly itself?</strong> Waypoints, missions, Offboard control, ROS 2 on a mission computer: choose between PX4 and ArduPilot. Human-flown with feel as the priority: Betaflight.</li>
+<li><strong>Must your changes stay private?</strong> If flight control code is your core value and you won&#39;t publish it, BSD-3 PX4 is simpler. If you can deliver source, GPLv3 ArduPilot is fine.</li>
+<li><strong>What vehicle?</strong> Both autopilots support fixed-wing, VTOL and rovers, and both docs mention boats and subs. My impression is ArduPilot covers more unusual vehicles, while PX4 has a foundation and member companies behind it. For FPV racers and small multirotors, Betaflight&#39;s ecosystem is the most complete.</li>
+<li><strong>Who maintains it?</strong> The most overlooked question. Firmware keeps moving; this week ArduPilot fixed the vibration failsafe and parameter scaling changed. Someone on your team has to track releases, read notes and regression-test in SITL and on real aircraft. Pick the one your team can keep up with.</li>
+</ol>
+<p>The Army&#39;s FPV Rodeo is a good example: a 7- or 10-inch FPV under $3,000, with Army-supplied motors and frames, expected to fly through electronic warfare and pass a teardown that checks firmware origin (<a href="https://dronenr.com/2026/11/17/army-manufacturing-rodeo-fpv-drones/">dronenr</a>). The notice doesn&#39;t name any firmware. But a firmware-origin check favors teams that can hand over full source and version history; that&#39;s my inference, and I&#39;d guess more tenders will be written this way.</p>
+<hr>
+<h2>6. 換韌體前的檢查清單｜Checklist Before You Commit</h2>
+<ul>
+<li><p><strong>授權義務寫進出貨流程：</strong> BSD-3 要附版權聲明；GPLv3 要給客戶原始碼或連結。和 SBOM 一起管。</p>
+</li>
+<li><p><strong>板子在不在支援清單：</strong> PX4 看官方 Autopilot Hardware 頁，ArduPilot 看 firmware.ardupilot.org 有沒有你那塊板子的韌體，Betaflight 看硬體政策和 cloud build 有沒有你的 target。</p>
+</li>
+<li><p><strong>日誌工具先跑一次：</strong> PX4 的<a href="https://docs.px4.io/main/en/log/flight_log_analysis.html">日誌分析工具</a>、ArduPilot 的飛行日誌、Betaflight 的 Blackbox。<a href="../../2026/11/drone-thrust-to-weight-ratio-weight-budget.html">上一篇</a>用懸停油門校正重量模型，靠的就是這些日誌。</p>
+</li>
+<li><p><strong>SITL 先飛再上實機：</strong> PX4 和 ArduPilot 都有 SITL；Betaflight README 也列了 SITL。</p>
+</li>
+<li><p><strong>固定版本、讀 release notes：</strong> 像 <code>ATC_INPUT_TC</code> 這種跨版本的參數改變，不讀就會在實機上踩到。</p>
+</li>
+<li><p><strong>Put license duties in the shipping process:</strong> BSD-3 needs the notice; GPLv3 needs source or a link for customers. Manage it with the SBOM.</p>
+</li>
+<li><p><strong>Check board support:</strong> PX4&#39;s Autopilot Hardware page, firmware.ardupilot.org for your board, Betaflight&#39;s hardware policy and cloud build targets.</p>
+</li>
+<li><p><strong>Run the log tools once:</strong> PX4&#39;s <a href="https://docs.px4.io/main/en/log/flight_log_analysis.html">log analysis tools</a>, ArduPilot flight logs, Betaflight Blackbox. <a href="../../2026/11/drone-thrust-to-weight-ratio-weight-budget.html">Last week&#39;s</a> hover-throttle check depends on them.</p>
+</li>
+<li><p><strong>Fly SITL before hardware:</strong> PX4 and ArduPilot both have SITL; Betaflight&#39;s README lists SITL too.</p>
+</li>
+<li><p><strong>Pin versions and read release notes:</strong> cross-version changes like <code>ATC_INPUT_TC</code> bite on real aircraft if you skip them.</p>
+</li>
+</ul>
+<hr>
+<h2>工程師重點｜Engineer&#39;s Takeaways</h2>
+<ol>
+<li><strong>先分自駕儀和 FPV 韌體。</strong> PX4、ArduPilot 為自主任務設計；Betaflight 為人飛的手感設計。
+<strong>Separate autopilots from FPV firmware.</strong> PX4 and ArduPilot are built for autonomy; Betaflight for human-flown feel.</li>
+<li><strong>授權是設計決定。</strong> PX4 是 BSD-3，ArduPilot、Betaflight 是 GPLv3；產品要交付什麼，在選料階段就要定，和 SBOM 一起管。
+<strong>Licensing is a design decision.</strong> BSD-3 for PX4, GPLv3 for ArduPilot and Betaflight; decide what you&#39;ll deliver early and track it with the SBOM.</li>
+<li><strong>RTOS 決定「準時」怎麼來。</strong> PX4 用 NuttX、ArduPilot 在 STM32 上用 ChibiOS、Betaflight 用自己的排程器讓陀螺儀到 PID 優先。看懂這層，除錯抖動和延遲才有方向。
+<strong>The RTOS decides how &quot;on time&quot; happens.</strong> NuttX for PX4, ChibiOS on STM32 for ArduPilot, a custom gyro-first scheduler for Betaflight. Knowing this layer points your jitter and latency debugging in the right direction.</li>
+</ol>
+<hr>
+<h2>下週預告｜Next Week</h2>
+<p>下一篇我想回到硬體，談機架設計：材料、剛性和振動，剛好接這週 ArduPilot 修的振動保護。｜Next, back to hardware: frame design, materials, stiffness and vibration.</p>
+<hr>
+<h2>本週無人機大新聞｜This Week&#39;s Big Drone News</h2>
+<h3>1. 追加預算三讀，559 億無人載具過關，附國產要求｜Taiwan Passes Supplementary Budget, NT$55.9B for Uncrewed Systems with Local-Production Strings</h3>
+<p>立法院 11/20 三讀通過 115 年度追加預算 6,076 億元，一毛未刪，其中國防部無人載具 559 億元過關。院會同時通過國民黨團提案：第二代海搜戰術型無人機、濱海監偵型、濱海攻擊型無人機和小型自殺式無人艇要在國內採購、國內生產；可攜式無人機反制系統和智慧垂直起降型無人機可以對外採購，但 3 年內國內產製比例要提高到 50%，並提出關鍵技術移轉清單；這 6 項新增案要在 2027 年 5 月底前完成招標（<a href="https://www.mirrordaily.news/story/99195">鏡報</a>）。</p>
+<p>我的看法：「3 年內國產 50%」對外購機種是很具體的工程題目，要拆得出哪些子系統能在台灣做、哪些要技轉。飛控韌體和地面站軟體，很可能是最先被拿來討論的一塊。</p>
+<p>On November 20, Taiwan&#39;s legislature passed the NT$607.6 billion supplementary budget without cuts, including NT$55.9 billion for the defense ministry&#39;s uncrewed systems. It also passed a KMT motion: second-generation maritime search drones, littoral surveillance and strike drones, and small attack USVs must be bought and built domestically; portable counter-drone systems and the smart VTOL drone may be bought abroad, but must reach 50% local production within three years with a list of key technology transfers; all six new programs must finish tendering by end of May 2027 (<a href="https://www.mirrordaily.news/story/99195">Mirror Daily</a>).</p>
+<p>My view: &quot;50% local within three years&quot; for imported systems is a concrete engineering problem. Someone has to decide which subsystems can be made in Taiwan and which need technology transfer, and flight software is likely one of the first pieces on the table.</p>
+<h3>2. 海軍 360 億、280 架垂直起降無人機公開招標；海巡 V-BAT 在恆春做適航驗證｜Taiwan Navy Tenders 280 VTOL Drones; Coast Guard V-BAT Undergoes Airworthiness Checks</h3>
+<p>國防部國防採購室 11/16 公告海軍「智慧垂直起降型無人機」案公開招標，預算 359 億 7257 萬 4000 元，最有利標，分 4 年籌獲 280 架無人機、140 套導控系統和 82 輛運輸載具；12/15 開標，須 3 家以上合格廠商投標，押標金 5,000 萬元。公告沒有指定機型或廠商（<a href="https://def.ltn.com.tw/article/breakingnews/5643200">自由軍武頻道</a>）。</p>
+<p>同一週，海巡署向 Shield AI 採購的 12 架 V-BAT（漢翔得標）在屏東恆春機場地面測試和試飛。聯合報引官員說法：美國援助的 JUMP20 有美國空軍出具的適航證明，可以走形式驗證；V-BAT 則要由民航局實測，甚至抽檢拆驗零件。海軍也派人到場觀察（<a href="https://udn.com/news/story/10930/9889731">聯合新聞網</a>）。</p>
+<p>適航驗證要拆零件，軟體版本和組態一樣會被問。從工程師角度看，交付文件裡「飛控韌體是哪個版本、從哪裡來、改了什麼」最好一開始就準備好。</p>
+<p>Taiwan&#39;s defense procurement office opened the Navy&#39;s smart VTOL drone tender on November 16: NT$35.97 billion, best-value award, 280 drones, 140 control systems and 82 transport vehicles over four years. Bids open December 15 and need at least three qualified bidders; no aircraft or vendor is specified (<a href="https://def.ltn.com.tw/article/breakingnews/5643200">Liberty Times Defense</a>).</p>
+<p>The same week, the Coast Guard&#39;s 12 Shield AI V-BATs (contract via AIDC) went through ground tests and flights at Hengchun airport. UDN quotes officials: the US-donated JUMP20 came with a US Air Force airworthiness certificate, but the V-BAT must be tested by Taiwan&#39;s CAA, including spot teardown of parts, with Navy observers on site (<a href="https://udn.com/news/story/10930/9889731">UDN</a>). If parts get torn down, firmware version and configuration will be asked about too; have that documented from day one.</p>
+<h3>3. 美國陸軍 FPV 製造競賽：400 架、單價上限 3,000 美元、拆機查韌體｜US Army FPV Manufacturing Rodeo: 400 Drones, $3,000 Cap, Teardown for Firmware</h3>
+<p>美國陸軍合約司令部 11/13 公告 sUAS「Manufacturing Rodeo」的無人機部分，回覆期限 11/20：首批 400 架 Group 1 FPV 單向攻擊機加 20 套地面站，單價上限 3,000 美元，2027/3/1 前交機，其中 10% 要在 2/15 先交作測試和訓練。陸軍提供 6S2P／6S4P 電池、2807／3115 無刷馬達、7 吋和 10 吋機架套件；廠商要交完整 BOM，追到晶圓製造和產地；國防合約管理署會拆機確認 100% 在美國本土組裝，沒有受管制外國對手的硬體、晶片或韌體（<a href="https://dronenr.com/2026/11/17/army-manufacturing-rodeo-fpv-drones/">dronenr</a>）。DRONELIFE 補充：系統要在電子干擾、衛星導航受限的環境下運作，表現好的可能拿到最多 1 萬架的後續生產選項（<a href="https://dronelife.com/2026/11/16/army-drone-manufacturing-rodeo/">DRONELIFE</a>）。</p>
+<p>The US Army Contracting Command posted the drone portion of its sUAS Manufacturing Rodeo on November 13, with responses due November 20: 400 Group 1 FPV one-way attack drones plus 20 ground stations, capped at $3,000 each, due by March 1, 2027, with 10% early on February 15. The Army supplies 6S2P/6S4P packs, 2807/3115 motors and 7- and 10-inch frame kits; bidders must submit a full BOM down to wafer fab and origin, and DCMA teardowns will confirm 100% US assembly and no covered foreign-adversary hardware, chips or firmware (<a href="https://dronenr.com/2026/11/17/army-manufacturing-rodeo-fpv-drones/">dronenr</a>). DRONELIFE adds that systems must work under EW and limited GNSS, and strong performers could get follow-on options up to 10,000 aircraft (<a href="https://dronelife.com/2026/11/16/army-drone-manufacturing-rodeo/">DRONELIFE</a>).</p>
+<h3>4. FCC 開放 450 MHz 給無人機控制鏈路，24 GHz 可用於偵測雷達｜FCC Opens 450 MHz for Drone Control Links, 24 GHz for Detection Radar</h3>
+<p>FCC 11/19 公開會議通過：450 MHz 頻段開放給地面和有人、無人航空器之間的安全相關資料鏈，改成全國單一執照；目前只有已持有全部 54 個地面台執照的 Aura Network Systems 符合資格。同一包規則允許地面雷達使用 24.45–24.65 GHz 偵測、追蹤無人機，但只涵蓋偵測，擊落仍歸其他聯邦法律管。報導也提醒，投票當天 FCC 還沒公布最終條文，建置細節是依 10/29 的草案（<a href="https://dronenr.com/2026/11/20/fcc-450-mhz-drone-24-ghz-radar/">dronenr</a>）。</p>
+<p>對設計端來說，有專用航空頻段的指令與控制鏈路（C2），代表飛控和數傳之間的介面、失聯處理邏輯，以後可能要對應不同等級的鏈路。</p>
+<p>At its November 19 open meeting, the FCC opened the 450 MHz band to safety-related data links between the ground and crewed or uncrewed aircraft under a single nationwide license; Aura Network Systems, which holds all 54 ground-station licenses, is the only qualifier. The package also lets ground radar use 24.45–24.65 GHz to detect and track drones; detection only, since takedown falls under other federal laws. The final text wasn&#39;t out on vote day, so build-out details come from the October 29 draft (<a href="https://dronenr.com/2026/11/20/fcc-450-mhz-drone-24-ghz-radar/">dronenr</a>). A dedicated aviation C2 channel means link-loss logic in the autopilot may need to handle different link classes.</p>
+<h3>5. Auterion 與烏克蘭 Skyfall 在德國合資造無人機｜Auterion and Ukraine&#39;s Skyfall Plan a Drone JV in Germany</h3>
+<p>路透 11/20 報導：無人機軟體公司 Auterion 和烏克蘭 Skyfall 計畫在德國成立合資公司，替烏克蘭生產無人機，先做 Skyfall 的 Shrike FPV 攻擊機。德國先前出資的 5 萬架 Shrike 合約（約 9,000 萬歐元）兩家公司說已交付。匿名業界人士說德國政府資金是「數億歐元」等級，目前用於給烏克蘭的訂單；德國政府當下沒有回應（<a href="https://www.marketscreener.com/news/germany-backs-new-ukrainian-drone-production-venture-with-auterion-skyfall-ce785ed3d98af622">MarketScreener／路透</a>）。</p>
+<p>Auterion 的 Skynode X 列在 Dronecode 官網的「Products Enabled by Dronecode」（<a href="https://dronecode.org/">Dronecode</a>）。和開場那兩則會員新聞放在一起看，我的觀察是 PX4 生態圈現在有很大一塊動能來自國防。</p>
+<p>Reuters reported on November 20 that drone software company Auterion and Ukraine&#39;s Skyfall plan a joint venture to build drones in Germany for Ukraine, starting with Skyfall&#39;s Shrike FPV attack drone. A German-funded contract for 50,000 Shrikes (about €90 million) has been delivered, the companies said. An anonymous industry source put German government funding in the triple-digit million euro range; the government couldn&#39;t be reached (<a href="https://www.marketscreener.com/news/germany-backs-new-ukrainian-drone-production-venture-with-auterion-skyfall-ce785ed3d98af622">MarketScreener/Reuters</a>). Auterion&#39;s Skynode X is listed among &quot;Products Enabled by Dronecode&quot; (<a href="https://dronecode.org/">Dronecode</a>); together with the membership news above, my read is that much of the PX4 ecosystem&#39;s momentum now comes from defense.</p>
+<h3>其他值得一看｜Also Worth a Look</h3>
+<ul>
+<li>Uber Eats 和 Zipline 11/17 起在德州休士頓郊區 Spring 開始無人機外送，下一站達拉斯；目標 2029 年底每天 100 萬單。Zipline 的機在 300 英尺以上巡航，用繩索放下配送艙，載重最多 8 磅、半徑 10 英里（<a href="https://www.theverge.com/transportation/1034794/uber-eats-zipline-drone-delivery-launch-texas-houston-dallas">The Verge</a>）。｜Uber Eats and Zipline start drone delivery in Spring, Texas; 8 lb, 10-mile radius.</li>
+<li>陸軍無人系統訓練指揮部 11/18 和虎尾科大簽合作備忘錄，是該指揮部成立後第一所合作大學，方向包括技術研發、快速製造、機動維修和測試驗證（<a href="https://udn.com/news/story/10930/9886861">聯合新聞網</a>）。｜Taiwan Army&#39;s uncrewed systems command signs its first university MOU, with NFU.</li>
+<li>民眾黨團 11/17 指出，工程會 9 月版「遙控無人機採購作業指引」新增例外條款：國內沒有能滿足需求的機型時，經首長核准可免除國產、非紅供應鏈和平戰轉換規格；同版也新增 SBOM 要求（<a href="https://udn.com/news/story/10930/9883789">中央社／聯合新聞網</a>）。｜Taiwan&#39;s drone procurement guideline adds an exception clause and an SBOM requirement.</li>
+<li>Elroy Air 和阿布達比 Barq Group 簽約，最多 20 架 Chaparral 混合動力貨運無人機、價值最高 7,000 萬美元；其中 5 架確定訂單、訂金 1,025 萬美元，2027 年開始交機，由 Kratos 在加州沙加緬度生產（<a href="https://dronedj.com/2026/11/18/elroy-air-drone-abu-dhabi/">DroneDJ</a>）。｜Elroy Air signs for up to 20 Chaparrals with Barq Group; 5 firm.</li>
+<li>Factorial 11/18 發表給航太和無人機用的 FAERO 電池平台，公司稱和現有高功率鋰電池比，能量密度最高多 80%、滿功率下能量最高 4 倍；這是廠商說法（<a href="https://factorialenergy.com/press-releases/factorial-launches-faerotm-debuting-with-anode-free-design-for-high-energy-and-high-power-aerospace-missions/">Factorial</a>）。｜Factorial launches FAERO cells for drones; company claims, not independent tests.</li>
+</ul>
+<hr>
+<h2>下週可能發展｜What to Watch Next Week</h2>
+<ul>
+<li><strong>11/24（一）–11/27（四）陸軍無人機訓測評鑑</strong>，臺南白河，首度加入夜間接戰和雙機協同打擊。｜<strong>Nov 24–27:</strong> Taiwan Army drone evaluation in Baihe, adding night engagement and two-drone strikes.（<a href="https://def.ltn.com.tw/article/breakingnews/5640431">自由軍武頻道</a>）</li>
+<li><strong>11/25（三）FCC 無人機衛星通訊提案初次意見截止。</strong>｜<strong>Nov 25:</strong> initial comments due on the FCC drone satcom proposal.（<a href="https://www.federalregister.gov/documents/2026/10/26/2026-21818/space-modernization-for-the-21st-century">Federal Register</a>）</li>
+<li><strong>12/7 FAA Part 108（BVLOS）法定期限</strong>，規則 7/10 起在白宮 OIRA 審查，還沒有公布日期。｜<strong>Dec 7:</strong> statutory deadline for Part 108; still at OIRA, no date.（<a href="https://uavcoach.com/faa-utm-flights-part-108-update/">UAV Coach</a>）</li>
+<li><strong>12/15 海軍 280 架垂直起降無人機開標。</strong>｜<strong>Dec 15:</strong> bids open for the Navy&#39;s 280 VTOL drones.（<a href="https://def.ltn.com.tw/article/breakingnews/5643200">自由軍武頻道</a>）</li>
+<li><strong>日期未定｜No date yet：</strong> 海巡 V-BAT 適航驗證結果（<a href="https://udn.com/news/story/10930/9889731">聯合新聞網</a>）；歐盟 EDF D-STORM 計畫徵集遊蕩彈藥和 UCAS 使用經驗，2027/1/11 截止（<a href="https://defence-industry-space.ec.europa.eu/edf-d-storm-project-launches-first-open-call-cascade-funding-2026-11-18_en">歐盟執委會</a>）。｜Coast Guard V-BAT airworthiness result; EU D-STORM open call closes Jan 11, 2027.</li>
+</ul>
+<hr>
+<p><strong>Albert｜無人機工程師｜Drone Engineer</strong></p>
+<p>履歷｜Resume：<a href="https://cwliao.com">cwliao.com</a></p>
+<p>連載頁｜Series：<a href="../../series/drone/index.html">無人機開發 52 週｜Drone Dev in 52 Weeks</a></p>
+</div>
+    </div>
+    
+  </article>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="container row">
+      <span>ChaoWei Liao — 無人機系統、量產測試與驗證的工程筆記，繁中與英文對照。</span>
+      <span>
+        <a href="../../feed.xml">RSS</a> ·
+        <a href="https://albert0731.github.io/ChaoWeiLiao_Resume/">ChaoWei Liao 履歷 / Resume</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>

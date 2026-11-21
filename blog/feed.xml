@@ -6,6 +6,13 @@
   <description>無人機系統、量產測試與驗證的工程筆記，繁中與英文對照。</description>
   <language>zh-tw</language>
   <item>
+    <title>開源飛控韌體怎麼選：PX4、ArduPilot、Betaflight 的授權、社群與 RTOS｜Choosing PX4, ArduPilot or Betaflight: Licenses, Communities and RTOS</title>
+    <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/px4-ardupilot-betaflight-open-source-flight-firmware.html</link>
+    <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/px4-ardupilot-betaflight-open-source-flight-firmware.html</guid>
+    <pubDate>Sat, 21 Nov 2026 00:00:00 GMT</pubDate>
+    <description>PX4、ArduPilot、Betaflight 怎麼選？對照官方授權檔與文件，比較 BSD-3 與 GPLv3、NuttX 與 ChibiOS、適用機種和社群。附本週無人機新聞。</description>
+  </item>
+  <item>
     <title>推重比怎麼抓：無人機重量與推力預算表實作｜Thrust-to-Weight Ratio in Practice: Building a Drone Weight and Thrust Budget</title>
     <link>https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/drone-thrust-to-weight-ratio-weight-budget.html</link>
     <guid isPermaLink="true">https://albert0731.github.io/ChaoWeiLiao_Resume/blog/2026/11/drone-thrust-to-weight-ratio-weight-budget.html</guid>
