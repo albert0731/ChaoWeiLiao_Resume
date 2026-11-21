@@ -4,7 +4,6 @@ titleEn: "Choosing PX4, ArduPilot or Betaflight: Licenses, Communities and RTOS"
 date: "2026-11-21"
 slug: px4-ardupilot-betaflight-open-source-flight-firmware
 series: drone
-draft: true
 tags: ["無人機開發 52 週", "PX4", "ArduPilot", "Betaflight", "NuttX", "飛控韌體"]
 excerpt: "PX4、ArduPilot、Betaflight 怎麼選？對照官方授權檔與文件，比較 BSD-3 與 GPLv3、NuttX 與 ChibiOS、適用機種和社群。附本週無人機新聞。"
 excerptEn: "PX4, ArduPilot or Betaflight? Licenses (BSD-3 vs GPLv3), RTOS (NuttX, ChibiOS), vehicles and community, checked against official sources."
